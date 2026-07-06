@@ -78,7 +78,7 @@ function renderNumbers({ latest, suite, extreme, cctv, route, official }) {
   setText("#stress-load", fmt.format(stress.vehicle_count || 0));
   setText("#observation-count", fmt.format(stress.observation_count || 0));
   setText("#safety-count", fmt.format(stress.capacity_violation_count || 0));
-  setText("#cctv-count", `${fmt.format(images)} images / ${fmt.format(annotations)} boxes`);
+  setText("#cctv-count", `${fmt.format(images)} / ${fmt.format(annotations)}`);
   setText("#official-count", `${fmt.format(silkBoard.peak_hour_pcu || 0)} / ${fmt.format(doddanakundi.peak_hour_pcu || 0)} PCU`);
 }
 
