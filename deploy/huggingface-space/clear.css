@@ -92,9 +92,9 @@ nav a {
 }
 
 main {
-  max-width: 1536px;
-  margin: 0 auto;
-  padding: 28px clamp(28px, 3.4vw, 44px) 56px;
+  width: 100%;
+  margin: 0;
+  padding: 28px clamp(20px, 3vw, 54px) 56px;
 }
 .hero {
   display: grid;
