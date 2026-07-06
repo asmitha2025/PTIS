@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+node_modules/
+dist/
+.env
+*.sqlite
+.DS_Store
+# Local bulky evidence and generated/export files
+Real data/
+*.pdf
+*.docx
+frontend-server*.log
+docs/linkedin_assets/
+
+# Local credentials / deployment secrets
+.env*
+*.pem
+*.key
+*token*

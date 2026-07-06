@@ -1,0 +1,6 @@
+﻿# Runtime API dependencies
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30,<1.0
+
+# Core verification dependencies kept deliberately small
+pydantic>=2.7,<3.0

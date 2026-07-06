@@ -1,0 +1,16 @@
+{
+  "dataset_id": "bmd45_bengaluru_cctv_validation_sample_v1",
+  "title": "BMD-45 Bengaluru CCTV validation sample",
+  "status": "public_cctv_detection_dataset",
+  "source_name": "AIM@IISc BMD-45 Bengaluru Mobility Dataset",
+  "source_url": "https://huggingface.co/datasets/iisc-aim/BMD-45",
+  "license": "CC BY 4.0",
+  "collection_start": "2025-02-01",
+  "collection_end": "2025-02-28",
+  "geography": "Bengaluru Safe City CCTV camera network",
+  "schema_version": "1.0",
+  "checksum_sha256": "computed in evidence/cctv_bmd45_report.json for downloaded local files",
+  "provenance_contact": "AIM@IISc public Hugging Face dataset; PTIS project owner for local sample validation",
+  "privacy_review": "Published BMD-45 release states frames are anonymized/redacted; PTIS stores only the public validation sample and COCO annotations",
+  "notes": "This dataset validates real Bengaluru CCTV vehicle-detection evidence. It is not an anonymized vehicle trajectory, OD, or field replay dataset."
+}

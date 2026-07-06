@@ -1,0 +1,16 @@
+﻿{
+  "dataset_id": "dult_cmp_bengaluru_2020_reference_v1",
+  "title": "DULT Comprehensive Mobility Plan Bengaluru 2020 official planning reference extract",
+  "status": "official_planning_reference",
+  "source_name": "Directorate of Urban Land Transport, Government of Karnataka",
+  "source_url": "https://dult.karnataka.gov.in/6/resources/en",
+  "license": "Public government planning report; reuse subject to DULT/Government of Karnataka terms",
+  "collection_start": "2020-01-01",
+  "collection_end": "2020-12-31",
+  "geography": "Bengaluru metropolitan area, with PTIS focus on ORR / Silk Board / Marathahalli / Whitefield",
+  "schema_version": "1.0",
+  "checksum_sha256": "CMP=EF22E3901AFD47251D48910F9889B9E338AD36F1B5F1239D311548A09F5D786D; CTTP=2494F9B6F807EFC33917C120AA489EB367F6C1402680D605923BB6D376CA693B",
+  "provenance_contact": "DULT public resources; PTIS project owner for normalized extract",
+  "privacy_review": "Published aggregate planning reference only; no individual vehicle/person identifiers included",
+  "notes": "This is an official planning/reference extract, not raw vehicle trajectory data or a field replay dataset."
+}

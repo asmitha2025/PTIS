@@ -1,0 +1,261 @@
+{
+  "assertions": [
+    {
+      "details": {
+        "errors": [],
+        "status": "public_cctv_detection_dataset"
+      },
+      "name": "manifest_valid",
+      "passed": true
+    },
+    {
+      "details": {
+        "status": "public_cctv_detection_dataset"
+      },
+      "name": "manifest_declares_cctv_not_field_replay",
+      "passed": true
+    },
+    {
+      "details": {
+        "path": "Real data\\BMD-45-Val\\metadata.jsonl"
+      },
+      "name": "metadata_file_exists",
+      "passed": true
+    },
+    {
+      "details": {
+        "path": "Real data\\BMD-45-Val\\_annotations.coco.json"
+      },
+      "name": "annotations_file_exists",
+      "passed": true
+    },
+    {
+      "details": {
+        "coco_images": 10194,
+        "metadata_rows": 10194
+      },
+      "name": "metadata_rows_match_coco_images",
+      "passed": true
+    },
+    {
+      "details": {
+        "annotation_count": 106404
+      },
+      "name": "coco_annotations_present",
+      "passed": true
+    },
+    {
+      "details": {
+        "category_count": 13
+      },
+      "name": "vehicle_categories_present",
+      "passed": true
+    },
+    {
+      "details": {
+        "local_image_count": 5,
+        "minimum": 5
+      },
+      "name": "local_validation_images_present",
+      "passed": true
+    },
+    {
+      "details": {
+        "checked": 5
+      },
+      "name": "local_images_match_metadata_and_coco",
+      "passed": true
+    },
+    {
+      "details": {
+        "checked": 5
+      },
+      "name": "local_images_are_1080p_and_match_coco",
+      "passed": true
+    },
+    {
+      "details": {
+        "warnings": [
+          "dataset_is_cctv_detection_not_field_replay"
+        ]
+      },
+      "name": "no_od_or_field_replay_claim",
+      "passed": true
+    }
+  ],
+  "categories": [
+    {
+      "annotation_count": 48653,
+      "id": 7,
+      "name": "Two-wheeler"
+    },
+    {
+      "annotation_count": 18895,
+      "id": 6,
+      "name": "Three-wheeler"
+    },
+    {
+      "annotation_count": 9906,
+      "id": 0,
+      "name": "Hatchback"
+    },
+    {
+      "annotation_count": 5686,
+      "id": 1,
+      "name": "Sedan"
+    },
+    {
+      "annotation_count": 5317,
+      "id": 8,
+      "name": "LCV"
+    },
+    {
+      "annotation_count": 4421,
+      "id": 2,
+      "name": "SUV"
+    },
+    {
+      "annotation_count": 3990,
+      "id": 4,
+      "name": "Bus"
+    },
+    {
+      "annotation_count": 2833,
+      "id": 5,
+      "name": "Truck"
+    },
+    {
+      "annotation_count": 2633,
+      "id": 3,
+      "name": "MUV"
+    },
+    {
+      "annotation_count": 1344,
+      "id": 11,
+      "name": "Bicycle"
+    },
+    {
+      "annotation_count": 1172,
+      "id": 10,
+      "name": "Tempo-traveller"
+    },
+    {
+      "annotation_count": 1153,
+      "id": 12,
+      "name": "Van"
+    },
+    {
+      "annotation_count": 401,
+      "id": 9,
+      "name": "Mini-bus"
+    }
+  ],
+  "dataset_id": "bmd45_bengaluru_cctv_validation_sample_v1",
+  "evidence_type": "real_public_cctv_detection_dataset",
+  "files": {
+    "annotations": "Real data\\BMD-45-Val\\_annotations.coco.json",
+    "checksums": {
+      "annotations_sha256": "037749672A059D85B6DAAA982E9F2F6B158B959D348E67852D3141C92ACC8EA9",
+      "metadata_sha256": "085A072F1AB4816599034A130B7029E53CF1726395939FABE339A6608F83069A"
+    },
+    "local_image_count": 5,
+    "manifest": "data\\bmd45_cctv_manifest.json",
+    "metadata": "Real data\\BMD-45-Val\\metadata.jsonl",
+    "sample_root": "Real data\\BMD-45-Val"
+  },
+  "generated_at": "2026-07-03T14:39:55.357169+00:00",
+  "manifest": {
+    "errors": [],
+    "path": "data\\bmd45_cctv_manifest.json",
+    "status": "public_cctv_detection_dataset",
+    "valid": true,
+    "warnings": [
+      "dataset_is_cctv_detection_not_field_replay"
+    ]
+  },
+  "metrics": {
+    "category_count": 13,
+    "coco_annotation_count": 106404,
+    "coco_image_count": 10194,
+    "local_image_count": 5,
+    "local_image_total_mb": 13.38,
+    "metadata_rows": 10194,
+    "sample_annotation_count": 40
+  },
+  "passed": true,
+  "sample_images": [
+    {
+      "bytes": 1573679,
+      "coco_annotation_count": 15,
+      "coco_dimension_match": true,
+      "coco_match": true,
+      "exists": true,
+      "file_name": "images_000/122.png",
+      "height": 1080,
+      "metadata_match": true,
+      "metadata_object_count": 15,
+      "sha256": "1A8E3457A8520529BEE2ED7A6502707CE8C05A05CB67381801D6C16FC73B62C8",
+      "width": 1920
+    },
+    {
+      "bytes": 3410826,
+      "coco_annotation_count": 4,
+      "coco_dimension_match": true,
+      "coco_match": true,
+      "exists": true,
+      "file_name": "images_000/189.png",
+      "height": 1080,
+      "metadata_match": true,
+      "metadata_object_count": 4,
+      "sha256": "E9BD8E16207700A2A382E168D0BED301CEDD051A6D0144E60E72AEB6329B91A9",
+      "width": 1920
+    },
+    {
+      "bytes": 3056360,
+      "coco_annotation_count": 12,
+      "coco_dimension_match": true,
+      "coco_match": true,
+      "exists": true,
+      "file_name": "images_000/219.png",
+      "height": 1080,
+      "metadata_match": true,
+      "metadata_object_count": 12,
+      "sha256": "C842526EA1B05014485CB9DB1E86E65498C09333FFCB76E7A76AEDBFE5E5C780",
+      "width": 1920
+    },
+    {
+      "bytes": 3827684,
+      "coco_annotation_count": 5,
+      "coco_dimension_match": true,
+      "coco_match": true,
+      "exists": true,
+      "file_name": "images_000/245.png",
+      "height": 1080,
+      "metadata_match": true,
+      "metadata_object_count": 5,
+      "sha256": "370B8516BB001DCA50695AB3F6B2D14975BA7F6748AFE4C2AD42F795E09CC927",
+      "width": 1920
+    },
+    {
+      "bytes": 2163640,
+      "coco_annotation_count": 4,
+      "coco_dimension_match": true,
+      "coco_match": true,
+      "exists": true,
+      "file_name": "images_000/57.png",
+      "height": 1080,
+      "metadata_match": true,
+      "metadata_object_count": 4,
+      "sha256": "B7821DB16259BA2F8004262778F671E92F9FC8249A16FF544638ED88D4688006",
+      "width": 1920
+    }
+  ],
+  "source": {
+    "license": "CC BY 4.0",
+    "name": "AIM@IISc BMD-45 Bengaluru Mobility Dataset",
+    "url": "https://huggingface.co/datasets/iisc-aim/BMD-45"
+  },
+  "status": "real_cctv_detection_evidence_ready",
+  "title": "BMD-45 Bengaluru CCTV validation sample",
+  "truth_boundary": "BMD-45 validates real Bengaluru CCTV vehicle-detection/counting evidence. It does not provide anonymized vehicle trajectories, OD labels, or checkpoint field replay proof."
+}

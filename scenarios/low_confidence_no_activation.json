@@ -1,0 +1,162 @@
+﻿{
+    "id":  "low_confidence_no_activation_v1",
+    "name":  "Low-confidence observation does not activate diversion",
+    "corridor":  {
+                     "id":  "orr_silk_board_whitefield",
+                     "name":  "Bengaluru ORR: Silk Board to Whitefield",
+                     "junctions":  [
+                                       {
+                                           "id":  "silk_board",
+                                           "name":  "Silk Board",
+                                           "order":  0,
+                                           "lat":  12.9170,
+                                           "lon":  77.6228
+                                       },
+                                       {
+                                           "id":  "hsr_layout",
+                                           "name":  "HSR Layout",
+                                           "order":  1,
+                                           "lat":  12.9116,
+                                           "lon":  77.6365
+                                       },
+                                       {
+                                           "id":  "sony_world",
+                                           "name":  "Sony World",
+                                           "order":  2,
+                                           "lat":  12.9352,
+                                           "lon":  77.6540
+                                       },
+                                       {
+                                           "id":  "marathahalli",
+                                           "name":  "Marathahalli",
+                                           "order":  3,
+                                           "lat":  12.9591,
+                                           "lon":  77.7014
+                                       },
+                                       {
+                                           "id":  "doddanekkundi",
+                                           "name":  "Doddanekkundi",
+                                           "order":  4,
+                                           "lat":  12.9724,
+                                           "lon":  77.7185
+                                       },
+                                       {
+                                           "id":  "itpl",
+                                           "name":  "ITPL",
+                                           "order":  5,
+                                           "lat":  12.9850,
+                                           "lon":  77.7360
+                                       },
+                                       {
+                                           "id":  "whitefield",
+                                           "name":  "Whitefield",
+                                           "order":  6,
+                                           "lat":  12.9698,
+                                           "lon":  77.7480
+                                       }
+                                   ],
+                     "destinations":  [
+                                          {
+                                              "id":  "hsr_layout",
+                                              "name":  "HSR Layout",
+                                              "junction_id":  "hsr_layout"
+                                          },
+                                          {
+                                              "id":  "sony_world",
+                                              "name":  "Sony World",
+                                              "junction_id":  "sony_world"
+                                          },
+                                          {
+                                              "id":  "marathahalli",
+                                              "name":  "Marathahalli",
+                                              "junction_id":  "marathahalli"
+                                          },
+                                          {
+                                              "id":  "doddanekkundi",
+                                              "name":  "Doddanekkundi",
+                                              "junction_id":  "doddanekkundi"
+                                          },
+                                          {
+                                              "id":  "itpl",
+                                              "name":  "ITPL",
+                                              "junction_id":  "itpl"
+                                          },
+                                          {
+                                              "id":  "whitefield",
+                                              "name":  "Whitefield",
+                                              "junction_id":  "whitefield"
+                                          }
+                                      ],
+                     "smart_links":  [
+                                         {
+                                             "id":  "sl_hsr_whitefield_probe",
+                                             "name":  "HSR to Whitefield confidence probe",
+                                             "from_junction_id":  "hsr_layout",
+                                             "to_junction_id":  "whitefield",
+                                             "destination_id":  "whitefield",
+                                             "capacity_vpm":  23,
+                                             "min_confidence":  0.65,
+                                             "min_diversion_vpm":  0.5
+                                         }
+                                     ],
+                     "od_priors":  [
+                                       {
+                                           "entry_junction_id":  "silk_board",
+                                           "source":  "fastag",
+                                           "probabilities":  {
+                                                                 "hsr_layout":  0.250,
+                                                                 "sony_world":  0.240,
+                                                                 "marathahalli":  0.242,
+                                                                 "doddanekkundi":  0.040,
+                                                                 "itpl":  0.048,
+                                                                 "whitefield":  0.180
+                                                             }
+                                       }
+                                   ]
+                 },
+    "engine":  {
+                   "anpr_epsilon":  0.02
+               },
+    "lwr":  {
+                "n_segments":  6,
+                "dx_km":  0.5,
+                "dt_seconds":  30,
+                "v_free_kmph":  48,
+                "rho_jam_per_km":  280
+            },
+    "initial_density_tw_per_km":  [
+                                      88,
+                                      72,
+                                      94,
+                                      115,
+                                      68,
+                                      61
+                                  ],
+    "tw_inflow_vpm":  50,
+    "approach_flow_vpm":  80,
+    "target_compliance_rate":  0.80,
+    "measured_compliance_rate":  0.78,
+    "capacity_snapshots":  [
+                               {
+                                   "link_id":  "sl_marathahalli_whitefield",
+                                   "receiving_capacity_vpm":  23.0,
+                                   "current_load_vpm":  8.0,
+                                   "nav_load_vpm":  0.5
+                               }
+                           ],
+    "observations":  [
+                         {
+                             "vehicle_id":  "KA01LOWCONF",
+                             "entry_junction_id":  "silk_board",
+                             "junction_id":  "hsr_layout",
+                             "turned":  false,
+                             "source":  "fastag"
+                         }
+                     ],
+    "expected":  {
+                     "no_activation_link_id":  "sl_hsr_whitefield_probe",
+                     "final_best_destination_id":  "marathahalli",
+                     "min_final_confidence":  0.32,
+                     "capacity_safe":  true
+                 }
+}

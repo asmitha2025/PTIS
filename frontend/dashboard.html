@@ -1,0 +1,236 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PTIS v2.0 Showcase</title>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="./styles.css?v=maplibre-showcase-1" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="topbar">
+        <div class="brandline">
+          <div>
+            <div class="title-row">
+              <strong class="ptis">PTIS</strong>
+              <span class="version">v2.0</span>
+              <span id="status-pill" class="badge">Loading evidence</span>
+            </div>
+            <p id="corridor-label" class="route-label">Bengaluru ORR proof walkthrough</p>
+          </div>
+          <div class="focus-metric">
+            <span>Replay confidence</span>
+            <strong id="wf-probability">--</strong>
+          </div>
+        </div>
+        <nav class="toolbar showcase-nav" aria-label="Showcase sections">
+          <a class="button-link primary" href="#how-it-works">How it works</a>
+          <a class="button-link" href="#route-proof-section">Route proof</a>
+          <a class="button-link" href="#evidence-section">Evidence</a>
+          <a class="button-link" href="#boundary-section">Boundary</a>
+          <a class="button-link" href="./system.html">System Guide</a>
+        </nav>
+      </header>
+
+      
+      <section class="showcase-hero" aria-label="PTIS public showcase">
+        <div class="hero-copy">
+          <p class="panel-title">Public showcase</p>
+          <h1>Predict destination pressure before the bottleneck fully forms.</h1>
+          <p>PTIS is a software proof for Bengaluru ORR. This page shows the idea, the replay evidence, and the exact boundary of what is not claimed yet.</p>
+          <div class="hero-actions" aria-label="Showcase actions">
+            <a class="button-link primary" href="#how-it-works">Start walkthrough</a>
+            <a class="button-link" href="#evidence-section">See proof numbers</a>
+          </div>
+        </div>
+        <aside class="hero-proof-card" aria-label="Current proof state">
+          <article>
+            <span>Question</span>
+            <strong>Where are they going?</strong>
+            <p>Checkpoint observations update destination belief.</p>
+          </article>
+          <article>
+            <span>Proof today</span>
+            <strong>Software validated</strong>
+            <p>Replay evidence, real route geometry, CCTV audit, official references.</p>
+          </article>
+          <article class="warning">
+            <span>Boundary</span>
+            <strong>Field validation pending</strong>
+            <p>No live control or congestion-reduction claim.</p>
+          </article>
+        </aside>
+      </section>
+
+      <section id="how-it-works" class="understand-panel" aria-label="PTIS quick understanding">
+        <div class="understand-head">
+          <div>
+            <p class="panel-title">How the idea works</p>
+            <h1>A simple walkthrough, not a control-room screen.</h1>
+          </div>
+          <span id="understand-status">Loading proof state</span>
+        </div>
+        <div class="understand-grid">
+          <article class="question-block plain">
+            <span>Typical traffic control</span>
+            <strong>How many vehicles are here now?</strong>
+            <p>Useful, but mostly reactive after pressure is already visible.</p>
+          </article>
+          <article class="question-block focus">
+            <span>PTIS question</span>
+            <strong>Where are they going?</strong>
+            <p>Every checkpoint passed without turning updates destination pressure.</p>
+          </article>
+          <article class="route-story-block">
+            <div class="story-block-head">
+              <span>Reading absence</span>
+              <strong id="route-story-title">Silk Board to Whitefield</strong>
+            </div>
+            <div id="simple-route-story" class="simple-route-story"></div>
+          </article>
+          <article class="gate-story-block">
+            <div class="story-block-head">
+              <span>Action rule</span>
+              <strong>Two gates must pass</strong>
+            </div>
+            <div id="simple-gate-story" class="simple-gate-story"></div>
+          </article>
+        </div>
+        <div id="simple-proof-strip" class="simple-proof-strip" aria-label="Public proof summary"></div>
+      </section>
+
+      <section id="evidence-section" class="stats" aria-label="Evidence metrics"><div id="stats-row" class="stats-inner"></div></section>
+
+      <section id="route-proof-section" class="panel map-panel" aria-label="Geographic corridor map">
+        <div class="panel-head compact">
+          <div>
+            <p class="panel-title">Real Route Replay</p>
+            <h1 id="scenario-name">Scenario</h1>
+          </div>
+          <span id="map-mode">software replay</span>
+        </div>
+        <div class="map-body">
+          <div class="map-stack" id="map-stack">
+            <div id="maplibre-map" class="maplibre-map" aria-hidden="true"></div>
+            <div id="tile-map" class="tile-map" aria-hidden="true"></div>
+            <svg id="geo-map" viewBox="0 0 980 330" role="img" aria-label="Bengaluru ORR corridor route overlay"></svg>
+            <div class="map-controls" aria-label="Map controls">
+              <button id="map-zoom-in" type="button" aria-label="Zoom in">+</button>
+              <button id="map-zoom-out" type="button" aria-label="Zoom out">-</button>
+              <button id="map-reset" type="button">Reset</button>
+            </div>
+            <div class="map-attribution">OpenStreetMap contributors</div>
+          </div>
+          <aside class="route-console" aria-label="Route checkpoint console">
+            <div class="route-console-head">
+              <span>Route replay</span>
+              <strong id="route-proof">--</strong>
+            </div>
+            <div id="route-checkpoints" class="checkpoint-list"></div>
+            <div class="flow-readout" aria-label="Flow replay metrics">
+              <article><span>Replay Load</span><strong id="flow-vehicles">--</strong></article>
+              <article><span>Replay Events</span><strong id="flow-observations">--</strong></article>
+              <article><span>Safety Gate</span><strong id="flow-safety">--</strong></article>
+            </div>
+          </aside>
+        </div>
+        <div id="map-status" class="status-line">Loading corridor evidence</div>
+      </section>
+
+      <section id="boundary-section" class="panel audience-panel" aria-label="Audience-specific PTIS explanation">
+        <div class="audience-tabs" role="tablist" aria-label="PTIS views">
+          <button type="button" class="audience-tab active" data-audience-tab="control">Story</button>
+          <button type="button" class="audience-tab" data-audience-tab="citizen">Public View</button>
+          <button type="button" class="audience-tab" data-audience-tab="officer">Pilot View</button>
+          <button type="button" class="audience-tab" data-audience-tab="engineer">Proof</button>
+          <button type="button" class="audience-tab" data-audience-tab="press">Safe Summary</button>
+        </div>
+        <div id="audience-content" class="audience-content"></div>
+      </section>
+
+      <section class="panel scenario-library-panel" aria-label="Verified scenario library">
+        <div class="panel-head compact">
+          <div>
+            <p class="panel-title">Verified Scenario Library</p>
+            <h2>All published replay cases</h2>
+          </div>
+          <span id="scenario-library-state">loading suite</span>
+        </div>
+        <div id="scenario-library" class="scenario-library"></div>
+      </section>
+
+      <section class="grid-main">
+        <section class="panel posterior-panel">
+          <div class="panel-head compact">
+            <div>
+              <p class="panel-title">Where PTIS Thinks Flow Is Going</p>
+              <h2 id="posterior-title">--</h2>
+            </div>
+            <span id="posterior-cycle">--</span>
+          </div>
+          <div class="bars" id="dest-bars"></div>
+          <div id="activation-alert" class="alert-line"></div>
+        </section>
+
+        <aside class="rightcol">
+          <section id="decision-card" class="panel decision-card">
+            <p class="panel-title">Smart Link Gate</p>
+            <strong id="decision-state" class="big-state">--</strong>
+            <p id="decision-detail" class="small-note">--</p>
+          </section>
+
+          <section class="panel capacity-card">
+            <p class="panel-title">Capacity Ledger</p>
+            <div class="ledger" id="capacity-ledger"></div>
+          </section>
+
+          <section class="panel cctv-card">
+            <div class="panel-head compact">
+              <div>
+                <p class="panel-title">Real CCTV Audit</p>
+                <h2 id="cctv-state">--</h2>
+              </div>
+              <span id="cctv-count">--</span>
+            </div>
+            <div class="cctv-strip" id="cctv-strip"></div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="panel density-panel">
+        <div class="panel-head compact">
+          <div>
+            <p class="panel-title">Two-Wheeler Density Replay</p>
+            <h2>Segment pressure</h2>
+          </div>
+          <span id="density-state">software model</span>
+        </div>
+        <div class="density-bars" id="density-bars"></div>
+      </section>
+
+      <section class="panel trace-panel">
+        <div class="panel-head compact">
+          <div>
+            <p class="panel-title">Replay Samples</p>
+            <h2>Vehicle trace audit</h2>
+          </div>
+          <span>hashed synthetic replay ids</span>
+        </div>
+        <div id="trace-strip" class="trace-strip"></div>
+      </section>
+
+      <section class="bottom-metrics" id="bottom-metrics" aria-label="Safety metrics"></section>
+
+      <details class="panel proof-details">
+        <summary>Evidence details</summary>
+        <div class="detail-grid" id="detail-grid"></div>
+        <div class="table-wrap"><table id="scenario-table"></table></div>
+      </details>
+
+      <p class="foot" id="truth-boundary">Software replay + real CCTV detection audit. Field replay pending.</p>
+    </main>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script src="./app.js?v=maplibre-showcase-1"></script>
+  </body>
+</html>

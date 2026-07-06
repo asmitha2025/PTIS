@@ -1,0 +1,18 @@
+﻿services:
+  ptis-api:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./evidence:/app/evidence
+
+  ptis-dashboard:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - ptis-api

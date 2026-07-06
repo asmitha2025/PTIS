@@ -1,0 +1,383 @@
+{
+  "aggregate_decisions": [
+    {
+      "abs_demand_error_vpm": 0.48706847442002754,
+      "actual_destination_demand_vpm": 53.24427480916031,
+      "average_posterior": {
+        "doddanekkundi": 0.1492537313432835,
+        "hsr_layout": 0.0,
+        "itpl": 0.17910447761193382,
+        "marathahalli": 0.0,
+        "sony_world": 0.0,
+        "whitefield": 0.6716417910447542
+      },
+      "decision": {
+        "activate": true,
+        "available_capacity_vpm": 14.5,
+        "confidence": 0.6716417910447542,
+        "destination_id": "whitefield",
+        "link_id": "sl_marathahalli_whitefield",
+        "q_commanded_vpm": 14.31957337546909,
+        "q_expected_vpm": 14.5,
+        "reason": "P(destination)=0.672; expected=min(demand 53.73 * scale 1.013, available 14.50) = 14.50 vpm"
+      },
+      "estimated_destination_demand_vpm": 53.73134328358034,
+      "link_id": "sl_marathahalli_whitefield",
+      "sample_count": 2096
+    }
+  ],
+  "assertions": [
+    {
+      "details": {
+        "aggregate_decision_count": 1
+      },
+      "name": "aggregate_decisions_exist",
+      "passed": true
+    },
+    {
+      "details": {
+        "capacity_violation_count": 0
+      },
+      "name": "no_capacity_violations",
+      "passed": true
+    },
+    {
+      "details": {
+        "overcommand_count": 0
+      },
+      "name": "no_overcommand_vs_actual_destination_demand",
+      "passed": true
+    },
+    {
+      "details": {
+        "false_positive_activations": 0
+      },
+      "name": "no_false_positive_aggregate_activation",
+      "passed": true
+    },
+    {
+      "details": {
+        "activation_count": 1
+      },
+      "name": "activations_exist",
+      "passed": true
+    }
+  ],
+  "generated_at": "2026-07-03T14:39:53+00:00",
+  "metrics": {
+    "activation_count": 1,
+    "actual_destination_counts": {
+      "doddanekkundi": 284,
+      "hsr_layout": 2004,
+      "itpl": 417,
+      "marathahalli": 1919,
+      "sony_world": 1981,
+      "whitefield": 1395
+    },
+    "aggregate_decision_count": 1,
+    "capacity_violation_count": 0,
+    "false_positive_activations": 0,
+    "mean_abs_demand_error_vpm": 0.48706847442002754,
+    "mean_activation_confidence": 0.6716417910447542,
+    "mean_activation_lead_junctions": 3,
+    "observation_count": 23314,
+    "overcommand_count": 0,
+    "vehicle_count": 8000
+  },
+  "passed": true,
+  "sample_vehicle_traces": [
+    {
+      "actual_destination_id": "sony_world",
+      "best_confidence": 1.0,
+      "best_destination_id": "sony_world",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00000"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "sony_world",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00000"
+        }
+      ],
+      "vehicle_id_hash": "55cea70dce279e6b"
+    },
+    {
+      "actual_destination_id": "doddanekkundi",
+      "best_confidence": 1.0,
+      "best_destination_id": "doddanekkundi",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00001"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "sony_world",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00001"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "marathahalli",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00001"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "doddanekkundi",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00001"
+        }
+      ],
+      "vehicle_id_hash": "63e8c34ede548ece"
+    },
+    {
+      "actual_destination_id": "hsr_layout",
+      "best_confidence": 1.0,
+      "best_destination_id": "hsr_layout",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00002"
+        }
+      ],
+      "vehicle_id_hash": "1a4b5a8a6f963af5"
+    },
+    {
+      "actual_destination_id": "hsr_layout",
+      "best_confidence": 1.0,
+      "best_destination_id": "hsr_layout",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00003"
+        }
+      ],
+      "vehicle_id_hash": "be40a4f063ecc0ce"
+    },
+    {
+      "actual_destination_id": "sony_world",
+      "best_confidence": 1.0,
+      "best_destination_id": "sony_world",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00004"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "sony_world",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00004"
+        }
+      ],
+      "vehicle_id_hash": "8631bbb1d034d14c"
+    },
+    {
+      "actual_destination_id": "sony_world",
+      "best_confidence": 1.0,
+      "best_destination_id": "sony_world",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00005"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "sony_world",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00005"
+        }
+      ],
+      "vehicle_id_hash": "7ecc979402357486"
+    },
+    {
+      "actual_destination_id": "whitefield",
+      "best_confidence": 1.0,
+      "best_destination_id": "whitefield",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00006"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "sony_world",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00006"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "marathahalli",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00006"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "doddanekkundi",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00006"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "itpl",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00006"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "whitefield",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00006"
+        }
+      ],
+      "vehicle_id_hash": "7ed561a319f7890c"
+    },
+    {
+      "actual_destination_id": "hsr_layout",
+      "best_confidence": 1.0,
+      "best_destination_id": "hsr_layout",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00007"
+        }
+      ],
+      "vehicle_id_hash": "4a3047d432a8c224"
+    },
+    {
+      "actual_destination_id": "marathahalli",
+      "best_confidence": 1.0,
+      "best_destination_id": "marathahalli",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00008"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "sony_world",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00008"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "marathahalli",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00008"
+        }
+      ],
+      "vehicle_id_hash": "790d4d3c5a823dc5"
+    },
+    {
+      "actual_destination_id": "doddanekkundi",
+      "best_confidence": 1.0,
+      "best_destination_id": "doddanekkundi",
+      "observations": [
+        {
+          "entry_junction_id": "silk_board",
+          "junction_id": "hsr_layout",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00009"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "sony_world",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00009"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "marathahalli",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": false,
+          "vehicle_id": "BATCH00009"
+        },
+        {
+          "entry_junction_id": null,
+          "junction_id": "doddanekkundi",
+          "source": "fastag",
+          "timestamp": "2026-07-03T14:39:52+00:00",
+          "turned": true,
+          "vehicle_id": "BATCH00009"
+        }
+      ],
+      "vehicle_id_hash": "6221de9284de65aa"
+    }
+  ],
+  "scenario_id": "silk_board_whitefield_capacity_safe_v1",
+  "scenario_name": "Silk Board to Whitefield capacity-safe activation",
+  "scenario_sha256": "8c72518e1e07a472b15739f3d56fcfcfcdbc16bdb8b44f5eb9620b8ff5ff43c9",
+  "seed": 42,
+  "vehicle_count": 8000
+}

@@ -1,0 +1,237 @@
+﻿{
+  "reference_id": "dult_cmp_bengaluru_2020_extract_v1",
+  "title": "Official Bengaluru mobility reference extract for PTIS corridor grounding",
+  "status": "official_planning_reference",
+  "truth_boundary": "This file contains source-cited aggregate planning data extracted from official public reports. It can ground corridor context and baseline constraints, but it cannot prove PTIS field performance without observed event-level replay data.",
+  "source_documents": [
+    {
+      "id": "cmp_2020",
+      "title": "Comprehensive Mobility Plan for Bengaluru - Final Report 2020",
+      "publisher": "Directorate of Urban Land Transport, Government of Karnataka",
+      "local_path": "Real data/Comprehensive_Mobility_Plan.pdf",
+      "source_url": "https://dult.karnataka.gov.in/assets/front/pdf/Comprehensive_Mobility_Plan.pdf",
+      "sha256": "EF22E3901AFD47251D48910F9889B9E338AD36F1B5F1239D311548A09F5D786D",
+      "pages": 242
+    },
+    {
+      "id": "cttp_summary",
+      "title": "Comprehensive Traffic and Transportation Plan for Bengaluru - Executive Summary",
+      "publisher": "Directorate of Urban Land Transport, Government of Karnataka",
+      "local_path": "Real data/CTTP.pdf",
+      "source_url": "https://dult.karnataka.gov.in/6/resources/en",
+      "sha256": "2494F9B6F807EFC33917C120AA489EB367F6C1402680D605923BB6D376CA693B",
+      "pages": 8
+    }
+  ],
+  "corridor_relevance": {
+    "ptis_corridor": "Silk Board - Marathahalli - Doddanekundi - Whitefield",
+    "official_context": [
+      "CMP identifies Outer Ring Road and Old Airport Road / Whitefield as major corridors for bus priority, corridor improvement, junction improvement, parking and intermodal planning.",
+      "CMP records Silk Board, Doddanekundi, Kundalahalli, Tin Factory, Marathahalli, KR Puram, Kadugodi and Whitefield as relevant high-pressure nodes in the Bengaluru network.",
+      "The extract supports corridor grounding only. It does not include anonymized vehicle checkpoint sequences."
+    ]
+  },
+  "junction_counts": [
+    {
+      "name": "Kundalahalli Junction",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-14",
+      "pdf_page": 80,
+      "source_note": "Total volume for 24 hours and peak hour on surveyed location; source cited in CMP as Revised Master Plan 2031 for Bangalore (Draft).",
+      "peak_hour_vehicles": 6280,
+      "peak_hour_pcu": 5656,
+      "volume_24h_vehicles": 89599,
+      "volume_24h_pcu": 80770,
+      "junction_type": "4-legged"
+    },
+    {
+      "name": "Doddanakundi Junction",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-14",
+      "pdf_page": 80,
+      "source_note": "Total volume for 24 hours and peak hour on surveyed location; source cited in CMP as Revised Master Plan 2031 for Bangalore (Draft).",
+      "peak_hour_vehicles": 8728,
+      "peak_hour_pcu": 7032,
+      "volume_24h_vehicles": 101324,
+      "volume_24h_pcu": 91960,
+      "junction_type": "5-legged"
+    },
+    {
+      "name": "Silk Board Junction",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-14",
+      "pdf_page": 80,
+      "source_note": "Total volume for 24 hours and peak hour on surveyed location; source cited in CMP as Revised Master Plan 2031 for Bangalore (Draft).",
+      "peak_hour_vehicles": 22634,
+      "peak_hour_pcu": 18180,
+      "volume_24h_vehicles": 323099,
+      "volume_24h_pcu": 281521,
+      "junction_type": "4-legged"
+    },
+    {
+      "name": "Tin Factory",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-14",
+      "pdf_page": 80,
+      "source_note": "Total volume for 24 hours and peak hour on surveyed location; source cited in CMP as Revised Master Plan 2031 for Bangalore (Draft).",
+      "peak_hour_vehicles": 15311,
+      "peak_hour_pcu": 16919,
+      "volume_24h_vehicles": 242638,
+      "volume_24h_pcu": 268529,
+      "junction_type": "4-legged staggered"
+    },
+    {
+      "name": "Silk Board Intersection",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-15",
+      "pdf_page": 82,
+      "source_note": "Turning volume count locations exceeding 10000 PCUs; source cited in CMP as CTTS 2015.",
+      "peak_hour": "09:00-10:00",
+      "peak_hour_vehicles": 11713,
+      "peak_hour_pcu": 12118
+    }
+  ],
+  "screenline_counts": [
+    {
+      "id": "NSE10",
+      "location": "ORR Dodannekundi",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-13",
+      "pdf_page": 79,
+      "source_note": "Peak hour traffic volume at screen line locations; source cited in CMP as Revised Master Plan 2031 for Bangalore (Draft).",
+      "directions": [
+        {
+          "direction": "Towards Maratha halli",
+          "vehicles": 5640,
+          "pcu": 4607
+        },
+        {
+          "direction": "Towards Dodannekundi",
+          "vehicles": 3676,
+          "pcu": 3216
+        }
+      ],
+      "both_direction_vehicles": 9316,
+      "both_direction_pcu": 7823
+    },
+    {
+      "id": "NSE11",
+      "location": "SGR Dental College Road",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-13",
+      "pdf_page": 79,
+      "directions": [
+        {
+          "direction": "Towards Outer ring road",
+          "vehicles": 1323,
+          "pcu": 776
+        },
+        {
+          "direction": "Towards Munnekollal main road",
+          "vehicles": 1048,
+          "pcu": 697
+        }
+      ],
+      "both_direction_vehicles": 2371,
+      "both_direction_pcu": 1473
+    },
+    {
+      "id": "NSE12",
+      "location": "Panathur Main Road",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-13",
+      "pdf_page": 79,
+      "directions": [
+        {
+          "direction": "Towards outer ring road",
+          "vehicles": 1157,
+          "pcu": 937
+        },
+        {
+          "direction": "Towards Varthur police station",
+          "vehicles": 659,
+          "pcu": 726
+        }
+      ],
+      "both_direction_vehicles": 1816,
+      "both_direction_pcu": 1663
+    },
+    {
+      "id": "EW16",
+      "location": "Kadugodi Flyover",
+      "source_document": "cmp_2020",
+      "source_table": "Table 2-13",
+      "pdf_page": 78,
+      "directions": [
+        {
+          "direction": "Towards White Field",
+          "vehicles": 1818,
+          "pcu": 1594
+        },
+        {
+          "direction": "Towards Sai Baba Ashram",
+          "vehicles": 922,
+          "pcu": 851
+        }
+      ],
+      "both_direction_vehicles": 2740,
+      "both_direction_pcu": 2445
+    }
+  ],
+  "planning_facts": [
+    {
+      "source_document": "cmp_2020",
+      "pdf_page": 74,
+      "category": "survey_scope",
+      "fact": "CMP survey particulars include 45 screen-line volume count locations, 14 turning-volume-count junctions from Revised Master Plan 2031, 75 turning-volume-count junctions from CTTS for Bengaluru Metropolitan Region, 13 outer cordon counts, roadside interviews, speed and delay survey, household interview survey and road inventory survey."
+    },
+    {
+      "source_document": "cmp_2020",
+      "pdf_page": 80,
+      "category": "critical_junctions",
+      "fact": "CMP states that peak-hour PCUs indicate critical junctions including Silk Board, Hebbal and Hennur on the ring road, and that nearly all listed junctions are operating beyond capacity."
+    },
+    {
+      "source_document": "cmp_2020",
+      "pdf_page": 110,
+      "category": "speed_context",
+      "fact": "CMP states that speeds on the city road network are mostly less than 20 km/h, while the core area operates at less than 11 km/h in peak hour."
+    },
+    {
+      "source_document": "cmp_2020",
+      "pdf_page": 146,
+      "category": "bus_priority_corridor",
+      "fact": "CMP identifies Outer Ring Road from Silk Board to Hebbal as a 30 km bus priority corridor with existing ROW at or above 24 m."
+    },
+    {
+      "source_document": "cmp_2020",
+      "pdf_page": 153,
+      "category": "corridor_improvement",
+      "fact": "CMP lists Outer Ring Road full length as a 62 km corridor improvement plan corridor, and Old Airport Road from Queens Road Junction to Whitefield as 19 km."
+    },
+    {
+      "source_document": "cmp_2020",
+      "pdf_page": 164,
+      "category": "capacity_augmentation",
+      "fact": "CMP states that Hebbal junction, Central Silk Board junction, and the common ORR/Old Madras Road section between KR Puram railway station and Tin Factory have traffic volume above 3.5 lakh PCUs per day and peak speeds below 10 km/h."
+    },
+    {
+      "source_document": "cmp_2020",
+      "pdf_page": 180,
+      "category": "intermodal_hubs",
+      "fact": "CMP lists Central Silk Board, Marathahalli, KR Puram Railway Station, Kadugodi Railway Station and Whitefield TTMC in its intermodal interchange hub table."
+    },
+    {
+      "source_document": "cttp_summary",
+      "pdf_page": 1,
+      "category": "network_problem",
+      "fact": "CTTP executive summary states that Bengaluru road network capacity is inadequate, many V/C ratios exceed 1, and average peak-hour traffic speed is about 13.5 km/h."
+    }
+  ],
+  "not_field_replay_inputs": [
+    "No anonymized vehicle/session checkpoint sequences are available in these PDFs.",
+    "No per-cycle signal state, queue length or receiving-capacity time series is available in these PDFs.",
+    "No before/after pilot intervention data is available in these PDFs.",
+    "Travel-time reduction, diversion accuracy and deployment impact must still be proven with field-observed or licensed event-level data."
+  ]
+}

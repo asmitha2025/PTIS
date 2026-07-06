@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PTIS | Bengaluru ORR Showcase</title>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="./clear.css?v=exact-clean-2" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="PTIS home">PTIS</a>
+      <nav aria-label="Page sections">
+        <a href="#route">Route</a>
+        <a href="#decision">Decision</a>
+        <a href="#proof">Proof</a>
+        <a href="#boundary">Boundary</a>
+        <a class="dashboard-link" href="./dashboard.html" aria-label="Open detailed dashboard">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M7 16V9m5 7V5m5 11v-4M6 9l4-4 4 4 4-6" /></svg>
+          Dashboard
+        </a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="PTIS public showcase">
+        <div class="hero-copy">
+          <p class="eyebrow">Real route grounding</p>
+          <h1>Traffic systems count vehicles. <span class="accent-text">PTIS predicts where they are going.</span></h1>
+          <p class="lead">A vehicle that keeps crossing checkpoints without turning is giving destination evidence. PTIS converts those movement patterns into early destination belief, helping predict bottlenecks before they fully form.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#route"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>Watch Route Replay</a>
+            <a class="secondary-action" href="#proof"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9m7 10V5m7 14v-7M3 19h18" /></svg>View Proof Numbers</a>
+          </div>
+          <div class="proof-ribbon" aria-label="Current proof state">
+            <span><svg viewBox="0 0 24 24"><path d="M20 7 10 17l-5-5" /></svg>Software validated</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-11a7 7 0 0 0-14 0c0 5.9 7 11 7 11Z" /><circle cx="12" cy="10" r="2.5" /></svg>Real route grounded</span>
+            <span><svg viewBox="0 0 24 24"><path d="m5 19 4-9 9-4-4 9-9 4Z" /><path d="m12 12 3 3" /></svg>Pilot-ready</span>
+          </div>
+        </div>
+
+        <section id="route" class="route-stage" aria-label="Route-grounded prediction map">
+          <div class="route-card-head">
+            <div>
+              <h2>Route-Grounded Prediction</h2>
+              <div class="route-path" aria-label="Route from Silk Board to Whitefield">
+                <span class="solid-dot"></span><strong>Silk Board</strong><span class="arrow">&rarr;</span><span class="ring-dot"></span><strong>Whitefield</strong>
+              </div>
+            </div>
+            <span id="route-distance" class="distance-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9m7 10V5m7 14v-7M3 19h18" /></svg>Loading route</span>
+          </div>
+          <div class="map-frame">
+            <div id="map" class="map"></div>
+            <svg id="fallback-map" class="fallback-map" role="img" aria-label="Fallback route geometry"></svg>
+            <div class="decision-card" aria-live="polite">
+              <span>PTIS belief after checkpoint</span>
+              <div class="belief-line"><strong id="belief-percent">--</strong><b id="belief-destination">Whitefield</b></div>
+              <div class="belief-track"><i id="belief-bar"></i></div>
+              <p id="hero-action">Loading latest replay decision</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="metric-strip" aria-label="Proof summary metrics">
+        <article><div class="metric-icon car"><svg viewBox="0 0 24 24"><path d="M5 16h14l-1.6-5.4A3 3 0 0 0 14.5 8h-5a3 3 0 0 0-2.9 2.6L5 16Z" /><path d="M7 16v3m10-3v3M8 19h.01M16 19h.01" /></svg></div><div><span>Route Points Analyzed</span><strong id="route-points-metric">--</strong><p>Across route geometry</p></div></article>
+        <article><div class="metric-icon check"><svg viewBox="0 0 24 24"><path d="M20 7 10 17l-5-5" /></svg></div><div><span>Observation Events</span><strong id="events-metric">--</strong><p>Processed in replay</p></div></article>
+        <article><div class="metric-icon chart"><svg viewBox="0 0 24 24"><path d="M4 19h16M7 16l4-5 3 3 5-8" /><path d="M17 6h2v2" /></svg></div><div><span>Prediction Confidence</span><strong id="confidence-metric">--</strong><p>Toward Whitefield</p></div></article>
+        <article><div class="metric-icon clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M12 8v5l4 2" /></svg></div><div><span>Safety Violations</span><strong id="safety-metric">--</strong><p>Capacity gate result</p></div></article>
+      </section>
+
+      <section id="decision" class="section decision-section" aria-label="How PTIS decides">
+        <div class="section-title"><p class="eyebrow">The idea in one flow</p><h2>Do not wait for the jam to become obvious.</h2></div>
+        <div class="decision-flow">
+          <article class="flow-card observe"><div class="step-row"><span class="step-number">1</span><span class="flow-icon"><svg viewBox="0 0 24 24"><path d="M6 19V9m6 10V5m6 14v-8" /><path d="M4 19h16" /></svg></span></div><h3>Observe</h3><p>Use checkpoint counts. No GPS path, no number plates, no face data.</p></article>
+          <article class="flow-card eliminate"><div class="step-row"><span class="step-number">2</span><span class="flow-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6.5 7.5V19l-3 1v-7.5L4 5Z" /></svg></span></div><h3>Eliminate</h3><p>Every passed junction removes one possible destination from the belief set.</p></article>
+          <article class="flow-card gate"><div class="step-row"><span class="step-number">3</span><span class="flow-icon"><svg viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.5-2.9 7.7-7 10-4.1-2.3-7-5.5-7-10V6l7-3Z" /><path d="m9 12 2 2 4-5" /></svg></span></div><h3>Gate</h3><p>Activate only when belief is high and the connector has safe capacity.</p></article>
+        </div>
+      </section>
+
+      <section id="proof" class="section proof-section" aria-label="Proof numbers">
+        <div class="section-title compact"><p class="eyebrow">What is proven today</p><h2>Software proof, not field-deployment claim.</h2></div>
+        <div class="proof-grid">
+          <article class="proof-card suite"><span>Deterministic suite</span><i><svg viewBox="0 0 24 24"><path d="M8 5h8M8 12h8M8 19h5" /><path d="M6 3h12v18H6z" /></svg></i><strong id="suite-pass">--</strong><p>Scenario checks passed.</p></article>
+          <article class="proof-card stress"><span>Stress replay</span><i><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg></i><strong id="stress-load">--</strong><p>Vehicles replayed through the decision logic.</p></article>
+          <article class="proof-card events"><span>Checkpoint events</span><i><svg viewBox="0 0 24 24"><path d="M12 21s7-5.1 7-11a7 7 0 0 0-14 0c0 5.9 7 11 7 11Z" /><circle cx="12" cy="10" r="2.5" /></svg></i><strong id="observation-count">--</strong><p>Observation events processed.</p></article>
+          <article class="proof-card safety"><span>Safety violations</span><i><svg viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.5-2.9 7.7-7 10-4.1-2.3-7-5.5-7-10V6l7-3Z" /></svg></i><strong id="safety-count">--</strong><p>Capacity gate violations found.</p></article>
+          <article class="proof-card cctv"><span>CCTV audit</span><i><svg viewBox="0 0 24 24"><path d="M5 7h14v10H5z" /><circle cx="12" cy="12" r="3" /><path d="M8 17l-2 3m10-3 2 3" /></svg></i><strong id="cctv-count">--</strong><p>Audit evidence reviewed.</p></article>
+          <article class="proof-card official"><span>Official grounding</span><i><svg viewBox="0 0 24 24"><path d="M5 19V9m5 10V5m5 14v-7m5 7V3" /><path d="M3 19h18" /></svg></i><strong id="official-count">--</strong><p>Ground truth and road-capacity basis.</p></article>
+        </div>
+      </section>
+
+      <section id="boundary" class="section boundary-section" aria-label="Truth boundary">
+        <div class="boundary-card"><div><p class="eyebrow">Truth boundary</p><h2>What this page is allowed to claim</h2></div><div class="boundary-columns"><article><h3>Claimed</h3><p>Replay software works on deterministic scenarios, stress load, real route geometry, public CCTV detection evidence, and official planning references.</p></article><article><h3>Not claimed yet</h3><p>No live BTP deployment, no Google Maps integration, no field-measured congestion reduction, and no agency-controlled checkpoint pilot yet.</p></article></div></div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script src="./clear.js?v=exact-clean-2"></script>
+  </body>
+</html>

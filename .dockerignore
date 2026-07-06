@@ -1,0 +1,10 @@
+﻿.git
+__pycache__/
+*.pyc
+*.sqlite
+*.sqlite-journal
+node_modules/
+.venv/
+ptis architecture.pdf
+Ptis ieee paper.pdf
+*.docx

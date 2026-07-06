@@ -1,0 +1,254 @@
+{
+  "assertions": [
+    {
+      "details": {
+        "activated_cycles": [
+          3
+        ],
+        "activation_by_cycle": 3,
+        "link_id": "sl_marathahalli_whitefield"
+      },
+      "name": "expected_link_activates",
+      "passed": true
+    },
+    {
+      "details": {
+        "activation_confidences": [
+          0.6716417910447762
+        ],
+        "threshold": 0.65
+      },
+      "name": "activation_confidence_floor",
+      "passed": true
+    },
+    {
+      "details": {
+        "violations": []
+      },
+      "name": "capacity_safe_decisions",
+      "passed": true
+    }
+  ],
+  "corridor": {
+    "destinations": [
+      {
+        "id": "hsr_layout",
+        "junction_id": "hsr_layout",
+        "name": "HSR Layout"
+      },
+      {
+        "id": "sony_world",
+        "junction_id": "sony_world",
+        "name": "Sony World"
+      },
+      {
+        "id": "marathahalli",
+        "junction_id": "marathahalli",
+        "name": "Marathahalli"
+      },
+      {
+        "id": "doddanekkundi",
+        "junction_id": "doddanekkundi",
+        "name": "Doddanekkundi"
+      },
+      {
+        "id": "itpl",
+        "junction_id": "itpl",
+        "name": "ITPL"
+      },
+      {
+        "id": "whitefield",
+        "junction_id": "whitefield",
+        "name": "Whitefield"
+      }
+    ],
+    "id": "orr_silk_board_whitefield",
+    "junctions": [
+      {
+        "id": "silk_board",
+        "lat": 12.917,
+        "lon": 77.6228,
+        "name": "Silk Board",
+        "order": 0
+      },
+      {
+        "id": "hsr_layout",
+        "lat": 12.9116,
+        "lon": 77.6365,
+        "name": "HSR Layout",
+        "order": 1
+      },
+      {
+        "id": "sony_world",
+        "lat": 12.9352,
+        "lon": 77.654,
+        "name": "Sony World",
+        "order": 2
+      },
+      {
+        "id": "marathahalli",
+        "lat": 12.9591,
+        "lon": 77.7014,
+        "name": "Marathahalli",
+        "order": 3
+      },
+      {
+        "id": "doddanekkundi",
+        "lat": 12.9724,
+        "lon": 77.7185,
+        "name": "Doddanekkundi",
+        "order": 4
+      },
+      {
+        "id": "itpl",
+        "lat": 12.985,
+        "lon": 77.736,
+        "name": "ITPL",
+        "order": 5
+      },
+      {
+        "id": "whitefield",
+        "lat": 12.9698,
+        "lon": 77.748,
+        "name": "Whitefield",
+        "order": 6
+      }
+    ],
+    "name": "Bengaluru ORR: Silk Board to Whitefield",
+    "smart_links": [
+      {
+        "capacity_vpm": 23.0,
+        "destination_id": "whitefield",
+        "from_junction_id": "marathahalli",
+        "id": "sl_marathahalli_whitefield",
+        "min_confidence": 0.65,
+        "min_diversion_vpm": 0.5,
+        "name": "Marathahalli to Whitefield managed connector",
+        "to_junction_id": "whitefield"
+      }
+    ]
+  },
+  "cycles": [
+    {
+      "best_confidence": 0.32266666666666666,
+      "best_destination_id": "marathahalli",
+      "compliance": {
+        "command_scale": 1.0126,
+        "control_output": 0.012600000000000012,
+        "measured_rate": 0.78,
+        "observed_alpha": 0.975,
+        "target_rate": 0.8
+      },
+      "cycle": 1,
+      "decisions": [],
+      "density_tw_per_km": [
+        69.425357,
+        86.36,
+        87.887143,
+        92.182857,
+        92.022857,
+        65.31
+      ],
+      "observation": {
+        "entry_junction_id": "silk_board",
+        "junction_id": "hsr_layout",
+        "source": "fastag",
+        "timestamp": "2026-07-03T14:39:53+00:00",
+        "turned": false,
+        "vehicle_id": "KA01AB1234"
+      },
+      "posterior": {
+        "doddanekkundi": 0.05333333333333334,
+        "itpl": 0.064,
+        "marathahalli": 0.32266666666666666,
+        "sony_world": 0.32,
+        "whitefield": 0.24
+      }
+    },
+    {
+      "best_confidence": 0.47450980392156866,
+      "best_destination_id": "marathahalli",
+      "compliance": {
+        "command_scale": 1.0098,
+        "control_output": 0.009800000000000008,
+        "measured_rate": 0.78,
+        "observed_alpha": 0.975,
+        "target_rate": 0.8
+      },
+      "cycle": 2,
+      "decisions": [],
+      "density_tw_per_km": [
+        68.959071,
+        76.961242,
+        88.150614,
+        89.809223,
+        86.104738,
+        80.676271
+      ],
+      "observation": {
+        "entry_junction_id": null,
+        "junction_id": "sony_world",
+        "source": "fastag",
+        "timestamp": "2026-07-03T14:39:53+00:00",
+        "turned": false,
+        "vehicle_id": "KA01AB1234"
+      },
+      "posterior": {
+        "doddanekkundi": 0.07843137254901962,
+        "itpl": 0.09411764705882354,
+        "marathahalli": 0.47450980392156866,
+        "whitefield": 0.35294117647058826
+      }
+    },
+    {
+      "best_confidence": 0.6716417910447762,
+      "best_destination_id": "whitefield",
+      "compliance": {
+        "command_scale": 1.0102,
+        "control_output": 0.01020000000000001,
+        "measured_rate": 0.78,
+        "observed_alpha": 0.975,
+        "target_rate": 0.8
+      },
+      "cycle": 3,
+      "decisions": [
+        {
+          "activate": true,
+          "available_capacity_vpm": 14.5,
+          "confidence": 0.6716417910447762,
+          "destination_id": "whitefield",
+          "link_id": "sl_marathahalli_whitefield",
+          "q_commanded_vpm": 14.35359334785191,
+          "q_expected_vpm": 14.5,
+          "reason": "P(destination)=0.672; expected=min(demand 53.73 * scale 1.010, available 14.50) = 14.50 vpm"
+        }
+      ],
+      "density_tw_per_km": [
+        66.672932,
+        74.866901,
+        82.260065,
+        87.973043,
+        86.843989,
+        83.725666
+      ],
+      "observation": {
+        "entry_junction_id": null,
+        "junction_id": "marathahalli",
+        "source": "fastag",
+        "timestamp": "2026-07-03T14:39:53+00:00",
+        "turned": false,
+        "vehicle_id": "KA01AB1234"
+      },
+      "posterior": {
+        "doddanekkundi": 0.1492537313432836,
+        "itpl": 0.17910447761194032,
+        "whitefield": 0.6716417910447762
+      }
+    }
+  ],
+  "generated_at": "2026-07-03T14:39:53+00:00",
+  "passed": true,
+  "scenario_id": "silk_board_whitefield_capacity_safe_v1",
+  "scenario_name": "Silk Board to Whitefield capacity-safe activation",
+  "scenario_sha256": "8c72518e1e07a472b15739f3d56fcfcfcdbc16bdb8b44f5eb9620b8ff5ff43c9"
+}

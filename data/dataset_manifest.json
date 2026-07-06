@@ -1,0 +1,16 @@
+﻿{
+  "dataset_id": "ptis_scenario_fixtures_v1",
+  "title": "PTIS software verification scenario fixtures",
+  "status": "synthetic_verification_fixture",
+  "source_name": "PTIS repository scenario fixtures",
+  "source_url": "local://scenarios",
+  "license": "Project repository license pending",
+  "collection_start": "2026-06-24",
+  "collection_end": "2026-06-24",
+  "geography": "Bengaluru ORR Silk Board to Whitefield corridor model",
+  "schema_version": "1.0",
+  "checksum_sha256": "computed per scenario in evidence reports",
+  "provenance_contact": "project owner",
+  "privacy_review": "no raw personal data in scenario fixtures",
+  "notes": "These fixtures validate software behavior. They are not field-observed traffic data."
+}

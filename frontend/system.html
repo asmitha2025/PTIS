@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PTIS v2.0 System Guide</title>
+    <link rel="stylesheet" href="./system.css?v=truth-guide-2" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <h1>PTIS v2.0 System Guide</h1>
+          <p>Frontend, backend, data, proof, public-review language, and real-world path in one truthful reference.</p>
+        </div>
+        <nav class="actions" aria-label="Guide actions">
+          <a class="button" href="./index.html?v=real-map-route-1">Map Console</a>
+          <a class="button" href="../evidence/PROOF_REPORT.md">Proof Report</a>
+        </nav>
+      </header>
+
+      <nav class="tabs" aria-label="System guide sections">
+        <button class="tab active" type="button" data-panel="overview">Overview</button>
+        <button class="tab" type="button" data-panel="frontend">Frontend</button>
+        <button class="tab" type="button" data-panel="backend">Backend</button>
+        <button class="tab" type="button" data-panel="data">Data</button>
+        <button class="tab" type="button" data-panel="proof">Proof</button>
+        <button class="tab" type="button" data-panel="public">Public</button>
+        <button class="tab" type="button" data-panel="path">Real World Path</button>
+      </nav>
+
+      <section id="panel-overview" class="panel active">
+        <section class="section">
+          <h2>What PTIS Proves Now</h2>
+          <div class="note ok"><strong>Current honest claim:</strong> PTIS is a reproducible software proof for capacity-safe smart-link diversion decisions on a Bengaluru ORR scenario. It uses a real OSRM/OpenStreetMap routed road geometry for the visible route, real BMD-45 CCTV detection evidence for vehicle-counting audit, official DULT/CMP planning references for corridor grounding, and synthetic/reproducible replay data for decision proof.</div>
+          <div class="grid4">
+            <div class="metric"><strong>26/26</strong><span>tests passed</span></div>
+            <div class="metric"><strong>8,000</strong><span>stress vehicles</span></div>
+            <div class="metric"><strong>1,185</strong><span>OSRM route points</span></div>
+            <div class="metric"><strong>0</strong><span>capacity violations</span></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>System Flow</h2>
+          <div class="flow">
+            <div class="step"><b>Scenario Inputs</b><span>junctions, priors, capacity snapshots</span></div>
+            <div class="step"><b>Bayesian Update</b><span>posterior destination probability</span></div>
+            <div class="step"><b>LWR Density</b><span>two-wheeler segment pressure</span></div>
+            <div class="step"><b>Capacity Gate</b><span>no over-commanding allowed</span></div>
+            <div class="step"><b>Evidence JSON</b><span>latest, suite, batch, CCTV, route</span></div>
+            <div class="step"><b>Map Console</b><span>real route replay, not live field traffic</span></div>
+          </div>
+          <p>The pasted reference had a useful full-system layout. This guide keeps that structure but removes unproven live-integration claims.</p>
+        </section>
+
+        <section class="section">
+          <h2>Truth Boundary</h2>
+          <div class="status-list">
+            <div class="status-item"><b>Software decision engine</b><span>Unit tests, scenario suite, baseline batch, and 8,000-vehicle stress all pass.</span><span class="badge proven">Proven</span></div>
+            <div class="status-item"><b>Route display</b><span>OSRM/OpenStreetMap route geometry: 1,185 coordinates over 37.88 km.</span><span class="badge proven">Proven</span></div>
+            <div class="status-item"><b>CCTV detection audit</b><span>BMD-45 sample validates metadata, COCO annotations, categories, and local frames.</span><span class="badge proven">Proven</span></div>
+            <div class="status-item"><b>Field replay</b><span>CSV validation pipeline exists, but real observed checkpoint/time-series/ground-truth data is still needed.</span><span class="badge pending">Pending</span></div>
+            <div class="status-item"><b>Live BTP, FASTag, Google, Waze</b><span>Not connected. These must stay future/partner-integration language.</span><span class="badge no">Not claimed</span></div>
+          </div>
+        </section>
+      </section>
+
+      <section id="panel-frontend" class="panel">
+        <section class="section">
+          <h2>Frontend</h2>
+          <p>The current frontend is a static operations dashboard in <span class="inline">frontend/</span>. It loads the local verification API first and falls back to committed evidence JSON files, so the proof still renders without the backend running.</p>
+          <div class="grid3">
+            <div class="tile"><strong>Map Console</strong><span>OpenStreetMap iframe plus SVG overlay for the routed road geometry and replay flow.</span></div>
+            <div class="tile"><strong>Evidence Metrics</strong><span>Scenario suite, extreme stress, real CCTV audit, official reference, and field gate status.</span></div>
+            <div class="tile"><strong>Replay Controls</strong><span>Refresh, scenario replay, suite run, baseline batch, and 8k stress via API when available.</span></div>
+          </div>
+          <h3>What the Map Shows</h3>
+          <table>
+            <tr><th>Layer</th><th>Source</th><th>Meaning</th></tr>
+            <tr><td>Basemap</td><td>OpenStreetMap embed</td><td>Real geographic map context.</td></tr>
+            <tr><td>Route line</td><td><span class="inline">data/orr_silk_board_whitefield_route_osrm.geojson</span></td><td>OSRM/OpenStreetMap road-route geometry, 1,185 coordinates.</td></tr>
+            <tr><td>Moving dots</td><td><span class="inline">evidence/extreme_batch_report.json</span></td><td>Verified replay visualization, not live field traffic.</td></tr>
+            <tr><td>Density color</td><td><span class="inline">evidence/latest_run.json</span></td><td>LWR two-wheeler segment pressure from the scenario replay.</td></tr>
+          </table>
+        </section>
+      </section>
+
+      <section id="panel-backend" class="panel">
+        <section class="section">
+          <h2>Backend</h2>
+          <p>The core backend lives in <span class="inline">backend/ptis_core/</span>. It is not a mock UI script: the tests, CLI, API, proof report, and frontend evidence all use the same core logic.</p>
+          <div class="grid2">
+            <div class="tile"><strong>Bayesian engine</strong><span>Updates destination probabilities from no-turn checkpoint observations.</span></div>
+            <div class="tile"><strong>Smart-link decision engine</strong><span>Activates only when confidence and receiving capacity are safe.</span></div>
+            <div class="tile"><strong>LWR/compliance model</strong><span>Models two-wheeler density and compliance scaling with explicit units.</span></div>
+            <div class="tile"><strong>Field replay gate</strong><span>Validates real CSVs, rejects raw identifiers, and requires ground-truth coverage.</span></div>
+          </div>
+          <h3>API Endpoints Used By The Dashboard</h3>
+          <pre>GET  /api/evidence/latest
+GET  /api/evidence/suite
+GET  /api/evidence/batch
+GET  /api/evidence/extreme-batch
+GET  /api/evidence/cctv
+GET  /api/evidence/field-replay
+GET  /api/official-reference
+GET  /api/route-geometry
+POST /api/scenarios/silk_board_whitefield_capacity_safe_v1/run
+POST /api/suite/run
+POST /api/batch/run
+POST /api/extreme-batch/run</pre>
+        </section>
+      </section>
+
+      <section id="panel-data" class="panel">
+        <section class="section">
+          <h2>Data And Dataset Status</h2>
+          <table>
+            <tr><th>Artifact</th><th>What It Proves</th><th>Boundary</th></tr>
+            <tr><td><span class="inline">evidence/latest_run.json</span></td><td>One scenario replay with posterior, density, and decision state.</td><td>Software replay only.</td></tr>
+            <tr><td><span class="inline">evidence/extreme_batch_report.json</span></td><td>8,000-vehicle deterministic stress with 23,314 observations and zero safety failures.</td><td>Synthetic stress, not field traffic.</td></tr>
+            <tr><td><span class="inline">evidence/cctv_bmd45_report.json</span></td><td>Real public CCTV detection dataset audit: 106,404 annotations and local frame checks.</td><td>Detection/counting evidence, not OD trajectories.</td></tr>
+            <tr><td><span class="inline">data/orr_silk_board_whitefield_route_osrm.geojson</span></td><td>Real routed road geometry for the visible route line.</td><td>Map reference, not observed vehicle movement.</td></tr>
+            <tr><td><span class="inline">data/field_observed/templates/</span></td><td>Required schema for real field replay.</td><td>Pending real collection/permission.</td></tr>
+          </table>
+        </section>
+      </section>
+
+      <section id="panel-proof" class="panel">
+        <section class="section">
+          <h2>How To Prove It</h2>
+          <p>Run the verifier from the repository root. This regenerates software evidence, stress reports, manifests, CCTV audit, and the proof report.</p>
+          <pre>powershell -ExecutionPolicy Bypass -File scripts\verify.ps1</pre>
+          <h3>Current Expected Result</h3>
+          <div class="grid3">
+            <div class="metric"><strong>26/26</strong><span>tests</span></div>
+            <div class="metric"><strong>6/6</strong><span>scenarios</span></div>
+            <div class="metric"><strong>0</strong><span>overcommands</span></div>
+          </div>
+          <div class="note warn"><strong>Do not use these pasted-reference claims yet:</strong> 43 percent congestion reduction, Rs 374 Cr annual benefit, live Google/Waze coordination, live FASTag/BTP integration, public deployment, or field-proven performance. Those are future targets until field replay and pilot validation pass.</div>
+        </section>
+      </section>
+
+      <section id="panel-public" class="panel">
+        <section class="section">
+          <h2>What Public Reviewers Should See</h2>
+          <p>Give reviewers the map console, proof report, public evidence brief, and this guide. The public claim should be narrow, falsifiable, and reproducible.</p>
+          <div class="note info"><strong>Safe public wording:</strong> Validated on reproducible corridor scenarios, grounded with official Bengaluru planning references, audited against real Bengaluru CCTV detection data, and visualized on a real OSRM/OpenStreetMap route. Field replay is pending observed checkpoint and OD/ground-truth data.</div>
+          <table>
+            <tr><th>Audience</th><th>Show</th><th>Reason</th></tr>
+            <tr><td>Traffic engineer</td><td>Proof report, route geometry file, scenario JSON, tests</td><td>They can audit behavior and boundaries.</td></tr>
+            <tr><td>ITS researcher</td><td>Bayesian logic, LWR/compliance tests, batch stress</td><td>They can challenge assumptions and methods.</td></tr>
+            <tr><td>Public viewer</td><td>Map console and safe evidence brief</td><td>They understand the idea without false deployment claims.</td></tr>
+          </table>
+        </section>
+      </section>
+
+      <section id="panel-path" class="panel">
+        <section class="section">
+          <h2>Real World Path</h2>
+          <table>
+            <tr><th>Phase</th><th>What Must Happen</th><th>Public Claim Allowed</th></tr>
+            <tr><td>Now</td><td>Publish reproducible software proof and route/CCTV evidence boundaries.</td><td>Software proof and real CCTV detection audit.</td></tr>
+            <tr><td>Field replay</td><td>Collect privacy-reviewed checkpoint observations, capacity time series, and ground-truth labels.</td><td>Validated on observed field replay, if metrics pass.</td></tr>
+            <tr><td>Shadow pilot</td><td>Run recommendation-only with agency permission and no public actuation.</td><td>Observed shadow-mode performance.</td></tr>
+            <tr><td>Deployment</td><td>Agency approval, control integration, safety review, measured before/after impact.</td><td>Field deployed only after measured pilot success.</td></tr>
+          </table>
+          <h3>Field CSVs Required</h3>
+          <pre>data/field_observed/vehicle_observations.csv
+data/field_observed/link_capacity.csv
+data/field_observed/ground_truth_labels.csv
+data/field_observed/dataset_manifest.json</pre>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const panels = Array.from(document.querySelectorAll('.panel'));
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const id = tab.dataset.panel;
+          tabs.forEach((item) => item.classList.toggle('active', item === tab));
+          panels.forEach((panel) => panel.classList.toggle('active', panel.id === `panel-${id}`));
+        });
+      });
+    </script>
+  </body>
+</html>

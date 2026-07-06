@@ -1,0 +1,16 @@
+﻿{
+  "dataset_id": "replace_with_field_dataset_id",
+  "title": "PTIS observed field replay dataset for Bengaluru ORR corridor",
+  "status": "field_observed",
+  "source_name": "replace_with_collection_owner_or_agency",
+  "source_url": "local://data/field_observed or official URL",
+  "license": "replace_with_permission_or_license",
+  "collection_start": "YYYY-MM-DD",
+  "collection_end": "YYYY-MM-DD",
+  "geography": "Bengaluru ORR Silk Board to Whitefield corridor",
+  "schema_version": "1.0",
+  "checksum_sha256": "replace_after_csvs_are_final",
+  "provenance_contact": "replace_with_responsible_contact",
+  "privacy_review": "raw identifiers removed; vehicle IDs salted/hashed before commit; no number plates or FASTag IDs stored",
+  "notes": "Use only after real observed checkpoint, capacity, and label CSV files are collected. Do not use for synthetic data."
+}
