@@ -3,7 +3,7 @@ title: PTIS Bengaluru ORR Showcase
 sdk: static
 app_file: index.html
 colorFrom: blue
-colorTo: cyan
+colorTo: blue
 pinned: false
 license: mit
 ---
