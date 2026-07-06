@@ -200,7 +200,7 @@ function initMapLibre(route, latest, extreme) {
       id: "ptis-route-line",
       type: "line",
       source: "ptis-route",
-      paint: { "line-color": "#185cf5", "line-width": 6, "line-opacity": .98 }
+      paint: { "line-color": "#13c8bd", "line-width": 6, "line-opacity": .98 }
     });
     map.addSource("ptis-points", { type: "geojson", data: pointGeoJson });
     map.addLayer({
@@ -221,7 +221,7 @@ function initMapLibre(route, latest, extreme) {
       source: "ptis-points",
       paint: {
         "circle-radius": ["match", ["get", "state"], "target", 10, "checkpoint", 9, 6],
-        "circle-color": ["match", ["get", "state"], "target", "#185cf5", "checkpoint", "#185cf5", "#0f172a"],
+        "circle-color": ["match", ["get", "state"], "target", "#13c8bd", "checkpoint", "#13c8bd", "#071739"],
         "circle-stroke-color": "#ffffff",
         "circle-stroke-width": 2
       }
