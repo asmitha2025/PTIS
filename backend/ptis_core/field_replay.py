@@ -35,7 +35,7 @@ CAPACITY_FIELDS = [
     "observed_approach_flow_vpm",
 ]
 GROUND_TRUTH_FIELDS = ["vehicle_hash", "destination_id", "arrival_timestamp", "source"]
-OBSERVATION_SOURCES = {"fastag", "anpr", "manual_count", "cctv_aggregate", "unknown"}
+OBSERVATION_SOURCES = {"anonymous_replay_token", "fastag", "anpr", "manual_count", "cctv_aggregate", "unknown"}
 CAPACITY_SOURCES = {"manual_count", "cctv_aggregate", "signal_controller", "agency_log", "unknown"}
 GROUND_TRUTH_SOURCES = {"survey", "anpr_exit", "agency_label", "manual_label", "unknown"}
 RAW_PLATE_PATTERN = re.compile(r"^[A-Z]{2}[ -]?\d{1,2}[ -]?[A-Z]{1,3}[ -]?\d{3,4}$")

@@ -42,7 +42,7 @@ class VehicleObservation:
     vehicle_id: str
     junction_id: str
     turned: bool = False
-    source: str = "fastag"
+    source: str = "anonymous_replay_token"
     entry_junction_id: str | None = None
     timestamp: str = field(default_factory=utc_now_iso)
 
@@ -54,7 +54,7 @@ class VehicleState:
     current_junction_id: str
     posterior: dict[str, float]
     eliminated_destination_ids: set[str] = field(default_factory=set)
-    source: str = "fastag"
+    source: str = "anonymous_replay_token"
     last_seen: str = field(default_factory=utc_now_iso)
 
     def best_destination(self) -> tuple[str, float]:

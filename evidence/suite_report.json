@@ -161,8 +161,8 @@
           "observation": {
             "entry_junction_id": "silk_board",
             "junction_id": "hsr_layout",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -197,8 +197,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "sony_world",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -243,8 +243,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "marathahalli",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -255,11 +255,11 @@
           }
         }
       ],
-      "generated_at": "2026-07-03T14:39:51+00:00",
+      "generated_at": "2026-07-07T07:13:34+00:00",
       "passed": true,
       "scenario_id": "full_capacity_blocks_activation_v1",
       "scenario_name": "Full receiving capacity blocks otherwise confident activation",
-      "scenario_sha256": "649acbb892bfb1a7c06c13440e3249a0c3c7d44d9385f4bb1d9fe13b14d38e71"
+      "scenario_sha256": "197f17162c9927ab7b803028ec088f43985a4b2e22a7ddacd71ebd95bec8ae11"
     },
     {
       "assertions": [
@@ -443,8 +443,8 @@
           "observation": {
             "entry_junction_id": "silk_board",
             "junction_id": "hsr_layout",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -479,8 +479,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "sony_world",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -525,8 +525,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "marathahalli",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -537,11 +537,11 @@
           }
         }
       ],
-      "generated_at": "2026-07-03T14:39:51+00:00",
+      "generated_at": "2026-07-07T07:13:34+00:00",
       "passed": true,
       "scenario_id": "low_compliance_capacity_safe_v1",
       "scenario_name": "Low measured compliance raises command scale without breaking capacity cap",
-      "scenario_sha256": "be406094dccf41de2cc619b978d1f34f23ed022ce1842ad950cca398e7fa50a1"
+      "scenario_sha256": "072faba725186d54c6536c81cd4fe371c6eb1e0f29aef51ea6db6cd9eaad5fcd"
     },
     {
       "assertions": [
@@ -711,8 +711,8 @@
           "observation": {
             "entry_junction_id": "silk_board",
             "junction_id": "hsr_layout",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01LOWCONF"
           },
@@ -725,11 +725,11 @@
           }
         }
       ],
-      "generated_at": "2026-07-03T14:39:51+00:00",
+      "generated_at": "2026-07-07T07:13:34+00:00",
       "passed": true,
       "scenario_id": "low_confidence_no_activation_v1",
       "scenario_name": "Low-confidence observation does not activate diversion",
-      "scenario_sha256": "9d26e521d6f63951f19d1d69500bf317d48bc5708ae6bece45af7728809dfd03"
+      "scenario_sha256": "7353a23156a05fe15383210fb3b1eab55fbbec0e5c5a41b27f362eb2d5ab8c6f"
     },
     {
       "assertions": [
@@ -902,7 +902,7 @@
             "entry_junction_id": "marathahalli",
             "junction_id": "marathahalli",
             "source": "unknown",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "UNKNOWNMID001"
           },
@@ -936,7 +936,7 @@
             "entry_junction_id": null,
             "junction_id": "doddanekkundi",
             "source": "unknown",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "UNKNOWNMID001"
           },
@@ -980,7 +980,7 @@
             "entry_junction_id": null,
             "junction_id": "itpl",
             "source": "unknown",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "UNKNOWNMID001"
           },
@@ -989,11 +989,11 @@
           }
         }
       ],
-      "generated_at": "2026-07-03T14:39:51+00:00",
+      "generated_at": "2026-07-07T07:13:34+00:00",
       "passed": true,
       "scenario_id": "mid_route_unknown_converges_v1",
       "scenario_name": "Mid-route unknown vehicle converges only after downstream observations",
-      "scenario_sha256": "2ec8fdf013beb291f0a55ffea8be996eed8da7b6534a04968ea3b62533289edf"
+      "scenario_sha256": "7548ae32b37780bd8e7e699cc121d0638f01a8738ec60739cef65226ec068e23"
     },
     {
       "assertions": [
@@ -1152,8 +1152,8 @@
           "observation": {
             "entry_junction_id": "silk_board",
             "junction_id": "hsr_layout",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -1188,8 +1188,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "sony_world",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -1234,8 +1234,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "marathahalli",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -1246,11 +1246,11 @@
           }
         }
       ],
-      "generated_at": "2026-07-03T14:39:51+00:00",
+      "generated_at": "2026-07-07T07:13:34+00:00",
       "passed": true,
       "scenario_id": "navigation_load_blocks_activation_v1",
       "scenario_name": "Navigation-shadow load reserves capacity and blocks activation",
-      "scenario_sha256": "263295108636f621bb5e9ec1dfeac1d6b324af2c6c02f88e438b06f8c3baed5d"
+      "scenario_sha256": "3544accf42f49857d2baa360323e3decb2073f9136eb7d5bda0246ea062184c1"
     },
     {
       "assertions": [
@@ -1406,8 +1406,8 @@
           "observation": {
             "entry_junction_id": "silk_board",
             "junction_id": "hsr_layout",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -1442,8 +1442,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "sony_world",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -1488,8 +1488,8 @@
           "observation": {
             "entry_junction_id": null,
             "junction_id": "marathahalli",
-            "source": "fastag",
-            "timestamp": "2026-07-03T14:39:51+00:00",
+            "source": "anonymous_replay_token",
+            "timestamp": "2026-07-07T07:13:34+00:00",
             "turned": false,
             "vehicle_id": "KA01AB1234"
           },
@@ -1500,11 +1500,11 @@
           }
         }
       ],
-      "generated_at": "2026-07-03T14:39:51+00:00",
+      "generated_at": "2026-07-07T07:13:34+00:00",
       "passed": true,
       "scenario_id": "silk_board_whitefield_capacity_safe_v1",
       "scenario_name": "Silk Board to Whitefield capacity-safe activation",
-      "scenario_sha256": "8c72518e1e07a472b15739f3d56fcfcfcdbc16bdb8b44f5eb9620b8ff5ff43c9"
+      "scenario_sha256": "0ce8d4436adafb9576ce90a44976c045dff619965a1b933b486121b5020ae4e6"
     }
   ]
 }

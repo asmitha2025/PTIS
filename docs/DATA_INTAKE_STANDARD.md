@@ -18,7 +18,7 @@ Rules:
 
 - `vehicle_hash` must be salted/hashed before storage.
 - `timestamp` must include timezone.
-- `source` must be one of `fastag`, `anpr`, `manual_count`, `cctv_aggregate`, or `unknown`.
+- `source` must be one of `anonymous_replay_token`, `fastag`, `anpr`, `manual_count`, `cctv_aggregate`, or `unknown`. Use `anonymous_replay_token` for public synthetic or privacy-preserving replay fixtures.
 - `turned` must be boolean.
 - Raw FASTag IDs or number plates must never be committed.
 

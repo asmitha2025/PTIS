@@ -152,8 +152,8 @@
       "observation": {
         "entry_junction_id": "silk_board",
         "junction_id": "hsr_layout",
-        "source": "fastag",
-        "timestamp": "2026-07-03T14:39:53+00:00",
+        "source": "anonymous_replay_token",
+        "timestamp": "2026-07-07T07:13:36+00:00",
         "turned": false,
         "vehicle_id": "KA01AB1234"
       },
@@ -188,8 +188,8 @@
       "observation": {
         "entry_junction_id": null,
         "junction_id": "sony_world",
-        "source": "fastag",
-        "timestamp": "2026-07-03T14:39:53+00:00",
+        "source": "anonymous_replay_token",
+        "timestamp": "2026-07-07T07:13:36+00:00",
         "turned": false,
         "vehicle_id": "KA01AB1234"
       },
@@ -234,8 +234,8 @@
       "observation": {
         "entry_junction_id": null,
         "junction_id": "marathahalli",
-        "source": "fastag",
-        "timestamp": "2026-07-03T14:39:53+00:00",
+        "source": "anonymous_replay_token",
+        "timestamp": "2026-07-07T07:13:36+00:00",
         "turned": false,
         "vehicle_id": "KA01AB1234"
       },
@@ -246,9 +246,9 @@
       }
     }
   ],
-  "generated_at": "2026-07-03T14:39:53+00:00",
+  "generated_at": "2026-07-07T07:13:36+00:00",
   "passed": true,
   "scenario_id": "silk_board_whitefield_capacity_safe_v1",
   "scenario_name": "Silk Board to Whitefield capacity-safe activation",
-  "scenario_sha256": "8c72518e1e07a472b15739f3d56fcfcfcdbc16bdb8b44f5eb9620b8ff5ff43c9"
+  "scenario_sha256": "0ce8d4436adafb9576ce90a44976c045dff619965a1b933b486121b5020ae4e6"
 }

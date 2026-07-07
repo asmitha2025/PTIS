@@ -74,6 +74,8 @@ function renderNumbers({ latest, suite, extreme, cctv, route, official }) {
   setText("#events-metric", fmt.format(stress.observation_count || 0));
   setText("#confidence-metric", confidenceText);
   setText("#safety-metric", fmt.format(stress.capacity_violation_count || 0));
+  const calibrationError = Number(stress.mean_synthetic_od_abs_rate_error || 0) * 100;
+  setText("#synthetic-calibration", `Synthetic OD calibration rate error: ${calibrationError.toFixed(2)}% in stress replay. This is synthetic calibration, not field OD accuracy.`);
   setText("#suite-pass", `${fmt.format(suite.passed_count || 0)}/${fmt.format(suite.scenario_count || 0)}`);
   setText("#stress-load", fmt.format(stress.vehicle_count || 0));
   setText("#observation-count", fmt.format(stress.observation_count || 0));

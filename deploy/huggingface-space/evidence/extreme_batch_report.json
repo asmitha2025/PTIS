@@ -23,7 +23,27 @@
       },
       "estimated_destination_demand_vpm": 53.73134328358034,
       "link_id": "sl_marathahalli_whitefield",
-      "sample_count": 2096
+      "sample_count": 2096,
+      "target_calibration": {
+        "absolute_rate_error": 0.006088355930272349,
+        "bins": [
+          {
+            "absolute_error": 0.006088355930272349,
+            "count": 2096,
+            "lower": 0.6,
+            "mean_probability": 0.6716417910447762,
+            "observed_rate": 0.6655534351145038,
+            "upper": 0.8
+          }
+        ],
+        "boundary": "synthetic replay calibration, not field OD accuracy",
+        "brier_score": 0.22262912819972144,
+        "destination_id": "whitefield",
+        "expected_calibration_error": 0.006088355930272349,
+        "mean_probability": 0.6716417910447762,
+        "observed_rate": 0.6655534351145038,
+        "sample_count": 2096
+      }
     }
   ],
   "assertions": [
@@ -61,9 +81,27 @@
       },
       "name": "activations_exist",
       "passed": true
+    },
+    {
+      "details": {
+        "boundary": "synthetic replay calibration, not field OD accuracy",
+        "mean_abs_rate_error": 0.006088355930272349,
+        "mean_brier_score": 0.22262912819972144
+      },
+      "name": "synthetic_od_calibration_reported",
+      "passed": true
+    },
+    {
+      "details": {
+        "actual": 0.006088355930272349,
+        "boundary": "sampling-tolerant synthetic replay check",
+        "maximum": 0.15
+      },
+      "name": "synthetic_od_rate_error_below_tolerance",
+      "passed": true
     }
   ],
-  "generated_at": "2026-07-03T14:39:53+00:00",
+  "generated_at": "2026-07-07T07:13:36+00:00",
   "metrics": {
     "activation_count": 1,
     "actual_destination_counts": {
@@ -80,6 +118,9 @@
     "mean_abs_demand_error_vpm": 0.48706847442002754,
     "mean_activation_confidence": 0.6716417910447542,
     "mean_activation_lead_junctions": 3,
+    "mean_synthetic_od_abs_rate_error": 0.006088355930272349,
+    "mean_synthetic_od_brier_score": 0.22262912819972144,
+    "mean_synthetic_od_expected_calibration_error": 0.006088355930272349,
     "observation_count": 23314,
     "overcommand_count": 0,
     "vehicle_count": 8000
@@ -94,16 +135,16 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00000"
         },
         {
           "entry_junction_id": null,
           "junction_id": "sony_world",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00000"
         }
@@ -118,32 +159,32 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00001"
         },
         {
           "entry_junction_id": null,
           "junction_id": "sony_world",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00001"
         },
         {
           "entry_junction_id": null,
           "junction_id": "marathahalli",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00001"
         },
         {
           "entry_junction_id": null,
           "junction_id": "doddanekkundi",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00001"
         }
@@ -158,8 +199,8 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00002"
         }
@@ -174,8 +215,8 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00003"
         }
@@ -190,16 +231,16 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00004"
         },
         {
           "entry_junction_id": null,
           "junction_id": "sony_world",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00004"
         }
@@ -214,16 +255,16 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00005"
         },
         {
           "entry_junction_id": null,
           "junction_id": "sony_world",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00005"
         }
@@ -238,48 +279,48 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00006"
         },
         {
           "entry_junction_id": null,
           "junction_id": "sony_world",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00006"
         },
         {
           "entry_junction_id": null,
           "junction_id": "marathahalli",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00006"
         },
         {
           "entry_junction_id": null,
           "junction_id": "doddanekkundi",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00006"
         },
         {
           "entry_junction_id": null,
           "junction_id": "itpl",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00006"
         },
         {
           "entry_junction_id": null,
           "junction_id": "whitefield",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00006"
         }
@@ -294,8 +335,8 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00007"
         }
@@ -310,24 +351,24 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00008"
         },
         {
           "entry_junction_id": null,
           "junction_id": "sony_world",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00008"
         },
         {
           "entry_junction_id": null,
           "junction_id": "marathahalli",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00008"
         }
@@ -342,32 +383,32 @@
         {
           "entry_junction_id": "silk_board",
           "junction_id": "hsr_layout",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00009"
         },
         {
           "entry_junction_id": null,
           "junction_id": "sony_world",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00009"
         },
         {
           "entry_junction_id": null,
           "junction_id": "marathahalli",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": false,
           "vehicle_id": "BATCH00009"
         },
         {
           "entry_junction_id": null,
           "junction_id": "doddanekkundi",
-          "source": "fastag",
-          "timestamp": "2026-07-03T14:39:52+00:00",
+          "source": "anonymous_replay_token",
+          "timestamp": "2026-07-07T07:13:35+00:00",
           "turned": true,
           "vehicle_id": "BATCH00009"
         }
@@ -377,7 +418,7 @@
   ],
   "scenario_id": "silk_board_whitefield_capacity_safe_v1",
   "scenario_name": "Silk Board to Whitefield capacity-safe activation",
-  "scenario_sha256": "8c72518e1e07a472b15739f3d56fcfcfcdbc16bdb8b44f5eb9620b8ff5ff43c9",
+  "scenario_sha256": "0ce8d4436adafb9576ce90a44976c045dff619965a1b933b486121b5020ae4e6",
   "seed": 42,
   "vehicle_count": 8000
 }

@@ -18,6 +18,9 @@ class BatchSimulationTest(unittest.TestCase):
         self.assertEqual(metrics["overcommand_count"], 0)
         self.assertEqual(metrics["false_positive_activations"], 0)
         self.assertGreater(metrics["activation_count"], 0)
+        self.assertLess(metrics["mean_synthetic_od_abs_rate_error"], 0.15)
+        self.assertLess(metrics["mean_synthetic_od_brier_score"], 0.25)
+        self.assertIn("target_calibration", report["aggregate_decisions"][0])
         self.assertAlmostEqual(metrics["mean_activation_confidence"], 0.6716417910447768)
 
     def test_extreme_8000_vehicle_stress_stays_capacity_safe(self):
@@ -30,6 +33,8 @@ class BatchSimulationTest(unittest.TestCase):
         self.assertEqual(metrics["false_positive_activations"], 0)
         self.assertGreater(metrics["observation_count"], 20000)
         self.assertGreater(metrics["activation_count"], 0)
+        self.assertLess(metrics["mean_synthetic_od_abs_rate_error"], 0.02)
+        self.assertLess(metrics["mean_synthetic_od_brier_score"], 0.23)
 
 if __name__ == "__main__":
     unittest.main()

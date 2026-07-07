@@ -187,10 +187,19 @@ def _batch_lines(batch: dict[str, Any], heading: str) -> list[str]:
         f"- Mean activation confidence: `{metrics['mean_activation_confidence']:.4f}`",
         f"- Mean activation lead junctions: `{metrics['mean_activation_lead_junctions']:.2f}`",
         f"- Mean absolute destination-demand error: `{metrics['mean_abs_demand_error_vpm']:.2f} vpm`",
+    ]
+    if "mean_synthetic_od_abs_rate_error" in metrics:
+        lines.extend([
+            f"- Synthetic OD calibration rate error: `{metrics['mean_synthetic_od_abs_rate_error']:.4f}`",
+            f"- Synthetic OD Brier score: `{metrics['mean_synthetic_od_brier_score']:.4f}`",
+            f"- Synthetic OD expected calibration error: `{metrics['mean_synthetic_od_expected_calibration_error']:.4f}`",
+            "- Calibration boundary: synthetic replay against known generated OD labels; not real field destination accuracy.",
+        ])
+    lines.extend([
         "",
         "Assertions:",
         "",
-    ]
+    ])
     for assertion in batch["assertions"]:
         lines.append(f"- `{assertion['name']}`: `{'PASS' if assertion['passed'] else 'FAIL'}`")
     return lines

@@ -60,7 +60,7 @@ class Corridor:
         }
         priors: dict[tuple[str, str], dict[str, float]] = {}
         for item in data.get("od_priors", []):
-            source = item.get("source", "fastag")
+            source = item.get("source", "anonymous_replay_token")
             entry = item["entry_junction_id"]
             priors[(entry, source)] = _normalise(item["probabilities"])
 

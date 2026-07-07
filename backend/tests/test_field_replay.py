@@ -121,9 +121,9 @@ class FieldReplayTest(unittest.TestCase):
             vehicle = f"vh_{index:08d}"
             minute = 10 + index
             obs_lines.extend([
-                f"{vehicle},hsr_layout,2026-06-24T08:{minute:02d}:00+05:30,fastag,false,silk_board",
-                f"{vehicle},sony_world,2026-06-24T08:{minute:02d}:30+05:30,fastag,false,",
-                f"{vehicle},marathahalli,2026-06-24T08:{minute+1:02d}:00+05:30,fastag,false,",
+                f"{vehicle},hsr_layout,2026-06-24T08:{minute:02d}:00+05:30,anonymous_replay_token,false,silk_board",
+                f"{vehicle},sony_world,2026-06-24T08:{minute:02d}:30+05:30,anonymous_replay_token,false,",
+                f"{vehicle},marathahalli,2026-06-24T08:{minute+1:02d}:00+05:30,anonymous_replay_token,false,",
             ])
             truth_lines.append(f"{vehicle},whitefield,2026-06-24T08:{minute+10:02d}:00+05:30,survey")
         observations.write_text("\n".join(obs_lines) + "\n", encoding="utf-8")
@@ -153,4 +153,3 @@ class FieldReplayTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

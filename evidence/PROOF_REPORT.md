@@ -49,6 +49,10 @@ Field performance is proven only when `evidence/field_replay_report.json` is gen
 - Mean activation confidence: `0.6716`
 - Mean activation lead junctions: `3.00`
 - Mean absolute destination-demand error: `5.95 vpm`
+- Synthetic OD calibration rate error: `0.0744`
+- Synthetic OD Brier score: `0.1950`
+- Synthetic OD expected calibration error: `0.0744`
+- Calibration boundary: synthetic replay against known generated OD labels; not real field destination accuracy.
 
 Assertions:
 
@@ -57,6 +61,8 @@ Assertions:
 - `no_overcommand_vs_actual_destination_demand`: `PASS`
 - `no_false_positive_aggregate_activation`: `PASS`
 - `activations_exist`: `PASS`
+- `synthetic_od_calibration_reported`: `PASS`
+- `synthetic_od_rate_error_below_tolerance`: `PASS`
 
 ## Extreme 8,000-Vehicle Stress Test
 
@@ -70,6 +76,10 @@ Assertions:
 - Mean activation confidence: `0.6716`
 - Mean activation lead junctions: `3.00`
 - Mean absolute destination-demand error: `0.49 vpm`
+- Synthetic OD calibration rate error: `0.0061`
+- Synthetic OD Brier score: `0.2226`
+- Synthetic OD expected calibration error: `0.0061`
+- Calibration boundary: synthetic replay against known generated OD labels; not real field destination accuracy.
 
 Assertions:
 
@@ -78,6 +88,8 @@ Assertions:
 - `no_overcommand_vs_actual_destination_demand`: `PASS`
 - `no_false_positive_aggregate_activation`: `PASS`
 - `activations_exist`: `PASS`
+- `synthetic_od_calibration_reported`: `PASS`
+- `synthetic_od_rate_error_below_tolerance`: `PASS`
 
 ## Real CCTV Detection Evidence
 

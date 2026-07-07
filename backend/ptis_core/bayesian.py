@@ -30,7 +30,7 @@ class BayesianDestinationEngine:
         self,
         vehicle_id: str,
         entry_junction_id: str,
-        source: str = "fastag",
+        source: str = "anonymous_replay_token",
     ) -> VehicleState:
         prior = self.corridor.prior_for_entry(entry_junction_id, source)
         if source == "anpr":

@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import hashlib
 import json
@@ -59,7 +59,7 @@ class BatchSimulator:
         self.approach_flow_vpm = float(scenario.get("approach_flow_vpm", 80.0))
         self.tw_inflow_vpm = float(scenario.get("tw_inflow_vpm", 50.0))
         self.entry_junction_id = scenario.get("batch", {}).get("entry_junction_id", "silk_board")
-        self.source = scenario.get("batch", {}).get("source", "fastag")
+        self.source = scenario.get("batch", {}).get("source", "anonymous_replay_token")
         self.prior = self.corridor.prior_for_entry(self.entry_junction_id, self.source)
         self.destination_by_order = {
             self.corridor.junction_order(destination.junction_id): destination
@@ -102,6 +102,14 @@ class BatchSimulator:
                 - self.corridor.junction_order(link.from_junction_id)
             )
 
+        calibration_reports = [
+            item["target_calibration"] for item in aggregate_decisions
+            if item.get("target_calibration")
+        ]
+        calibration_abs_errors = [item["absolute_rate_error"] for item in calibration_reports]
+        calibration_brier_scores = [item["brier_score"] for item in calibration_reports]
+        calibration_ece_values = [item["expected_calibration_error"] for item in calibration_reports]
+
         metrics = {
             "vehicle_count": self.vehicle_count,
             "observation_count": sum(len(v["observations"]) for v in vehicles),
@@ -113,6 +121,9 @@ class BatchSimulator:
             "mean_activation_confidence": mean(activation_confidences) if activation_confidences else 0.0,
             "mean_activation_lead_junctions": mean(lead_junctions) if lead_junctions else 0.0,
             "mean_abs_demand_error_vpm": mean([item["abs_demand_error_vpm"] for item in aggregate_decisions]) if aggregate_decisions else 0.0,
+            "mean_synthetic_od_abs_rate_error": mean(calibration_abs_errors) if calibration_abs_errors else 0.0,
+            "mean_synthetic_od_brier_score": mean(calibration_brier_scores) if calibration_brier_scores else 0.0,
+            "mean_synthetic_od_expected_calibration_error": mean(calibration_ece_values) if calibration_ece_values else 0.0,
             "actual_destination_counts": dict(sorted(actual_destination_counts.items())),
         }
         assertions = [
@@ -140,6 +151,24 @@ class BatchSimulator:
                 "name": "activations_exist",
                 "passed": metrics["activation_count"] > 0,
                 "details": {"activation_count": metrics["activation_count"]},
+            },
+            {
+                "name": "synthetic_od_calibration_reported",
+                "passed": bool(calibration_reports),
+                "details": {
+                    "mean_abs_rate_error": metrics["mean_synthetic_od_abs_rate_error"],
+                    "mean_brier_score": metrics["mean_synthetic_od_brier_score"],
+                    "boundary": "synthetic replay calibration, not field OD accuracy",
+                },
+            },
+            {
+                "name": "synthetic_od_rate_error_below_tolerance",
+                "passed": metrics["mean_synthetic_od_abs_rate_error"] <= 0.15,
+                "details": {
+                    "actual": metrics["mean_synthetic_od_abs_rate_error"],
+                    "maximum": 0.15,
+                    "boundary": "sampling-tolerant synthetic replay check",
+                },
             },
         ]
         return {
@@ -245,9 +274,73 @@ class BatchSimulator:
                 "actual_destination_demand_vpm": actual_destination_demand_vpm,
                 "abs_demand_error_vpm": abs(estimated_destination_demand_vpm - actual_destination_demand_vpm),
                 "average_posterior": average_posterior,
+                "target_calibration": self._target_calibration(snapshots, link.destination_id),
                 "decision": asdict(decision),
             })
         return out
+
+    @staticmethod
+    def _target_calibration(
+        snapshots: list[dict[str, Any]],
+        destination_id: str,
+        bin_count: int = 5,
+    ) -> dict[str, Any]:
+        if not snapshots:
+            return {
+                "destination_id": destination_id,
+                "sample_count": 0,
+                "mean_probability": 0.0,
+                "observed_rate": 0.0,
+                "absolute_rate_error": 0.0,
+                "brier_score": 0.0,
+                "expected_calibration_error": 0.0,
+                "bins": [],
+                "boundary": "synthetic replay calibration, not field OD accuracy",
+            }
+
+        rows = []
+        for snapshot in snapshots:
+            probability = float(snapshot["posterior"].get(destination_id, 0.0))
+            observed = 1.0 if snapshot["actual_destination_id"] == destination_id else 0.0
+            rows.append((probability, observed))
+
+        bins: list[list[tuple[float, float]]] = [[] for _ in range(bin_count)]
+        for probability, observed in rows:
+            index = min(bin_count - 1, max(0, int(probability * bin_count)))
+            bins[index].append((probability, observed))
+
+        bin_reports = []
+        expected_calibration_error = 0.0
+        total = len(rows)
+        for index, values in enumerate(bins):
+            if not values:
+                continue
+            mean_probability = mean([item[0] for item in values])
+            observed_rate = mean([item[1] for item in values])
+            abs_error = abs(mean_probability - observed_rate)
+            expected_calibration_error += (len(values) / total) * abs_error
+            bin_reports.append({
+                "lower": index / bin_count,
+                "upper": (index + 1) / bin_count,
+                "count": len(values),
+                "mean_probability": mean_probability,
+                "observed_rate": observed_rate,
+                "absolute_error": abs_error,
+            })
+
+        mean_probability = mean([item[0] for item in rows])
+        observed_rate = mean([item[1] for item in rows])
+        return {
+            "destination_id": destination_id,
+            "sample_count": total,
+            "mean_probability": mean_probability,
+            "observed_rate": observed_rate,
+            "absolute_rate_error": abs(mean_probability - observed_rate),
+            "brier_score": mean([(probability - observed) ** 2 for probability, observed in rows]),
+            "expected_calibration_error": expected_calibration_error,
+            "bins": bin_reports,
+            "boundary": "synthetic replay calibration, not field OD accuracy",
+        }
 
     def _sample_destination(self) -> str:
         r = self.random.random()

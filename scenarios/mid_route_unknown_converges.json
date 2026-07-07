@@ -1,4 +1,4 @@
-﻿{
+{
     "id":  "mid_route_unknown_converges_v1",
     "name":  "Mid-route unknown vehicle converges only after downstream observations",
     "corridor":  {
@@ -102,7 +102,7 @@
                      "od_priors":  [
                                        {
                                            "entry_junction_id":  "silk_board",
-                                           "source":  "fastag",
+                                           "source":  "anonymous_replay_token",
                                            "probabilities":  {
                                                                  "hsr_layout":  0.250,
                                                                  "sony_world":  0.240,

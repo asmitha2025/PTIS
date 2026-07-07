@@ -163,7 +163,7 @@
     "metadata": "Real data\\BMD-45-Val\\metadata.jsonl",
     "sample_root": "Real data\\BMD-45-Val"
   },
-  "generated_at": "2026-07-03T14:39:55.357169+00:00",
+  "generated_at": "2026-07-07T07:13:38.636876+00:00",
   "manifest": {
     "errors": [],
     "path": "data\\bmd45_cctv_manifest.json",

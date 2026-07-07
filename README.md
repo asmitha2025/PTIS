@@ -62,10 +62,23 @@ The project does not yet prove:
 - Real driver compliance rates.
 - Google Maps or navigation-app coordination.
 - FASTag or number-plate-based vehicle identity.
+- A live privacy-preserving vehicle re-identification method.
 - Full origin-destination field accuracy.
+- Calibration against real destination ground truth.
+- Complete coverage of intermediate slip roads, service roads, and uninstrumented exits.
 - Field replay with observed checkpoint trajectories and ground-truth labels.
 
 This boundary matters. The project is strongest when it is presented as software validation plus public evidence grounding, with field validation clearly listed as the next step.
+
+## Critical Modeling Boundaries
+
+Technical reviewers will usually ask three questions first. PTIS now answers them explicitly:
+
+1. Same-vehicle linkage: the current software replay uses synthetic anonymized trace IDs so the Bayesian logic can be tested against known generated OD labels. A real pilot must choose either privacy-preserving anonymous re-identification with a measured false-match rate, or an aggregate flow-conservation assignment method. PTIS does not require publishing GPS paths, number plates, faces, or private IDs.
+2. Checkpoint coverage: every uninstrumented slip road, service road, or intermediate exit is a possible leakage point. A field pilot must define checkpoint spacing, known exits, missing-sensor assumptions, and uncertainty penalties before claiming OD accuracy.
+3. Predictive accuracy: deterministic tests and capacity-gate checks prove software behavior. They do not prove real destination accuracy. The current 8,000-vehicle replay reports synthetic OD calibration rate error, but real OD calibration still requires observed checkpoint data plus ground-truth destination labels.
+
+Adjacent work: PTIS is related to classical OD-matrix estimation from link counts, Bluetooth/WiFi or ANPR-based OD estimation, sequential destination prediction, and ramp-metering style capacity gating. The distinctive project claim is the combination of privacy-safe destination evidence, Bayesian narrowing, and capacity-safe activation boundaries.
 
 ## Evidence Snapshot
 
@@ -77,6 +90,8 @@ Current repository evidence includes:
 | Unit tests | 29/29 passed in the last full proof run |
 | Standard batch stress replay | 240 vehicles, 689 observations |
 | Extreme stress replay | 8,000 vehicles, 23,314 observations |
+| Synthetic OD calibration rate error in 8,000-vehicle replay | about 0.0061, synthetic only |
+| Synthetic OD Brier score in 8,000-vehicle replay | about 0.2226, synthetic only |
 | Capacity-gate violations in stress replay | 0 |
 | False-positive aggregate activations | 0 |
 | Real CCTV metadata rows | 10,194 |
