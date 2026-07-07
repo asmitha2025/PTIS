@@ -249,6 +249,128 @@ function initMapLibre(route, latest, extreme) {
   });
 }
 
+
+const WALK_STEPS = [
+  {
+    code: "SB",
+    label: "Silk Board",
+    confidence: 18,
+    title: "Vehicle enters at Silk Board",
+    body: "PTIS starts from a prior belief. Six possible destinations remain, so the system observes without acting."
+  },
+  {
+    code: "HSR",
+    label: "HSR Layout",
+    confidence: 22,
+    title: "Passed Silk Board without turning",
+    body: "The vehicle did not exit immediately. One local possibility becomes less likely, and Whitefield belief rises to 22%."
+  },
+  {
+    code: "SW",
+    label: "Sony World",
+    confidence: 34,
+    title: "Passed HSR Layout without turning",
+    body: "Another junction is eliminated from the destination set. PTIS now has stronger evidence that the flow is continuing downstream."
+  },
+  {
+    code: "MH",
+    label: "Marathahalli",
+    confidence: 67,
+    title: "Belief crosses the action threshold",
+    body: "At Marathahalli, Whitefield belief reaches 67%. PTIS marks the connector decision as eligible, then checks receiving-road capacity before any command is allowed.",
+    eligible: true
+  },
+  {
+    code: "DK",
+    label: "Doddanekkundi",
+    confidence: 82,
+    title: "Downstream evidence keeps increasing",
+    body: "Continued movement after Marathahalli strengthens the destination belief. The capacity gate still prevents over-commanding the receiving road."
+  },
+  {
+    code: "WF",
+    label: "Whitefield",
+    confidence: 100,
+    title: "Replay destination observed",
+    body: "In this software replay, the trace reaches Whitefield. That confirms the replay path for this example, not a live field-deployment result.",
+    final: true
+  }
+];
+
+let walkIndex = 0;
+
+function renderWalkthrough(route) {
+  const track = q("#walk-track");
+  if (!track) return;
+  const routeKm = route?.distance_m ? km(route.distance_m) : "route grounded";
+  setText("#walk-route-summary", `6 junctions / ${routeKm}`);
+  track.innerHTML = WALK_STEPS.map((step, index) => `
+    <button class="walk-node" type="button" role="tab" data-walk-index="${index}" aria-selected="false">
+      <span class="walk-node-dot"><span class="walk-node-code">${step.code}</span></span>
+      <span class="walk-node-label">${step.label}</span>
+      <span class="walk-node-prob"></span>
+    </button>
+  `).join("");
+  track.addEventListener("click", event => {
+    const button = event.target.closest("[data-walk-index]");
+    if (!button) return;
+    walkIndex = Number(button.dataset.walkIndex || 0);
+    updateWalkthrough();
+  });
+  q("#walk-prev")?.addEventListener("click", () => {
+    walkIndex = Math.max(0, walkIndex - 1);
+    updateWalkthrough();
+  });
+  q("#walk-next")?.addEventListener("click", () => {
+    walkIndex = Math.min(WALK_STEPS.length - 1, walkIndex + 1);
+    updateWalkthrough();
+  });
+  q("#walk-reset")?.addEventListener("click", () => {
+    walkIndex = 0;
+    updateWalkthrough();
+  });
+  updateWalkthrough();
+}
+
+function updateWalkthrough() {
+  const step = WALK_STEPS[walkIndex] || WALK_STEPS[0];
+  const track = q("#walk-track");
+  if (track) {
+    const progress = WALK_STEPS.length <= 1 ? 0 : (walkIndex / (WALK_STEPS.length - 1)) * 100;
+    track.style.setProperty("--progress-ratio", String(progress / 100));
+    track.querySelectorAll(".walk-node").forEach((node, index) => {
+      const item = WALK_STEPS[index];
+      node.classList.toggle("is-passed", index < walkIndex);
+      node.classList.toggle("is-active", index === walkIndex && !item.eligible && !item.final);
+      node.classList.toggle("is-eligible", index === walkIndex && Boolean(item.eligible));
+      node.classList.toggle("is-final", index === walkIndex && Boolean(item.final));
+      node.setAttribute("aria-selected", String(index === walkIndex));
+      const prob = node.querySelector(".walk-node-prob");
+      if (prob) prob.textContent = index < walkIndex ? `${item.confidence}%` : "";
+    });
+  }
+  setText("#walk-confidence", `${step.confidence}%`);
+  const bar = q("#walk-progress-bar");
+  if (bar) bar.style.width = `${step.confidence}%`;
+  const progress = q(".walk-progress");
+  if (progress) progress.classList.toggle("is-eligible", step.confidence >= 65);
+  const card = q("#walk-card");
+  if (card) {
+    card.classList.toggle("is-eligible", Boolean(step.eligible));
+    card.classList.toggle("is-final", Boolean(step.final));
+    card.innerHTML = `<h3>${step.title}</h3><p>${step.body}</p>`;
+  }
+  setText("#walk-position", `Junction ${walkIndex + 1} / ${WALK_STEPS.length}`);
+  const prev = q("#walk-prev");
+  const next = q("#walk-next");
+  if (prev) prev.disabled = walkIndex === 0;
+  if (next) {
+    next.disabled = walkIndex === WALK_STEPS.length - 1;
+    next.textContent = walkIndex === WALK_STEPS.length - 2 ? "Finish replay" : "Next junction";
+  }
+}
+
+
 async function init() {
   try {
     const [latest, suite, extreme, cctv, route, official] = await Promise.all([
@@ -260,6 +382,7 @@ async function init() {
       loadJson(DATA.official)
     ]);
     renderNumbers({ latest, suite, extreme, cctv, route, official });
+    renderWalkthrough(route);
     renderFallback(route, latest, extreme);
     initMapLibre(route, latest, extreme);
   } catch (error) {

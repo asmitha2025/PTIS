@@ -1444,3 +1444,282 @@ body {
     min-height: 112px;
   }
 }
+
+/* Interactive checkpoint walkthrough */
+.walkthrough-section {
+  padding-top: 38px;
+  padding-bottom: 44px;
+}
+.walkthrough-title {
+  max-width: 780px;
+  margin-bottom: 18px;
+}
+.walkthrough-title p:not(.eyebrow) {
+  max-width: 690px;
+  margin: 12px 0 0;
+  color: #40526c;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 550;
+}
+.walkthrough-panel {
+  padding: 24px;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .78);
+  box-shadow: var(--shadow-soft);
+}
+.walkthrough-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-bottom: 24px;
+  color: #66758d;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.walkthrough-meta strong {
+  color: #344258;
+  font-weight: 900;
+}
+.walkthrough-meta em {
+  margin-left: auto;
+  color: #60718d;
+  font-style: normal;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.walk-track {
+  --progress-ratio: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: start;
+  gap: 0;
+  min-height: 126px;
+  margin-bottom: 22px;
+}
+.walk-track::before,
+.walk-track::after {
+  content: "";
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 30px;
+  height: 4px;
+  border-radius: 999px;
+  background: #e3e8ef;
+}
+.walk-track::after {
+  right: auto;
+  width: calc((100% - 64px) * var(--progress-ratio));
+  background: #111827;
+  transition: width .22s ease;
+}
+.walk-node {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: #66758d;
+  font: inherit;
+  cursor: pointer;
+}
+.walk-node-dot {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border: 4px solid #e3e7ed;
+  border-radius: 999px;
+  background: #f0f2f5;
+  color: #7b8797;
+  font-size: 17px;
+  font-weight: 900;
+  transition: transform .16s ease, background .16s ease, border-color .16s ease, color .16s ease;
+}
+.walk-node-label {
+  color: #526176;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+.walk-node-prob {
+  min-height: 16px;
+  color: #0f9f53;
+  font-size: 11px;
+  font-weight: 800;
+}
+.walk-node.is-passed .walk-node-dot {
+  border-color: #18bf63;
+  background: #18bf63;
+  color: #ffffff;
+}
+.walk-node.is-active .walk-node-dot {
+  transform: translateY(-3px);
+  border-color: #070707;
+  background: #070707;
+  color: #ffffff;
+}
+.walk-node.is-eligible .walk-node-dot {
+  border-color: #13b8b0;
+  background: linear-gradient(135deg, #0875b8, #13c8bd);
+  color: #ffffff;
+}
+.walk-node.is-final .walk-node-dot {
+  border-color: #071739;
+  background: #071739;
+  color: #ffffff;
+}
+.walk-node.is-passed .walk-node-dot::before {
+  content: "";
+  width: 12px;
+  height: 22px;
+  border: solid #ffffff;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg) translate(-1px, -2px);
+}
+.walk-node.is-passed .walk-node-code { display: none; }
+.walk-insight-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, .78fr) minmax(360px, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+.confidence-box,
+.walk-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(6, 70, 122, .07);
+}
+.confidence-box {
+  padding: 20px;
+}
+.confidence-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+.confidence-head span {
+  color: #60718d;
+  font-size: 14px;
+  font-weight: 850;
+}
+.confidence-head strong {
+  color: #071739;
+  font-family: "Inter Tight", "Inter", sans-serif;
+  font-size: 31px;
+  line-height: 1;
+  font-weight: 900;
+}
+.walk-progress {
+  height: 18px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e6e9ee;
+}
+.walk-progress i {
+  display: block;
+  width: 18%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2d7bff, #13c8bd);
+  transition: width .22s ease, background .22s ease;
+}
+.walk-progress.is-eligible i {
+  background: linear-gradient(90deg, #12a95a, #21c468);
+}
+.threshold-note {
+  margin: 13px 0 0;
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 800;
+}
+.walk-card {
+  min-height: 162px;
+  padding: 22px 24px;
+}
+.walk-card h3 {
+  margin: 0 0 10px;
+  color: #071739;
+  font-size: 18px;
+  line-height: 1.22;
+  font-weight: 900;
+}
+.walk-card p {
+  margin: 0;
+  color: #263956;
+  font-size: 16px;
+  line-height: 1.58;
+}
+.walk-card.is-eligible {
+  border-color: rgba(19, 200, 189, .42);
+  background: linear-gradient(135deg, #071739 0%, #0b2b45 100%);
+}
+.walk-card.is-eligible h3,
+.walk-card.is-eligible p {
+  color: #ffffff;
+}
+.walk-card.is-final {
+  border-color: rgba(18, 169, 90, .38);
+}
+.walk-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.walk-controls button {
+  min-height: 44px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 9px;
+  background: #eef1f5;
+  color: #071739;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.walk-controls button.primary {
+  min-width: 164px;
+  background: #070707;
+  color: #ffffff;
+}
+.walk-controls button:disabled {
+  cursor: not-allowed;
+  opacity: .48;
+}
+.walk-controls span {
+  color: #60718d;
+  font-size: 13px;
+  font-weight: 750;
+}
+@media (max-width: 980px) {
+  .walk-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 22px;
+  }
+  .walk-track::before,
+  .walk-track::after { display: none; }
+  .walk-insight-grid { grid-template-columns: 1fr; }
+  .walkthrough-meta em { margin-left: 0; }
+}
+@media (max-width: 560px) {
+  .walkthrough-panel { padding: 16px; }
+  .walk-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .walk-node-dot { width: 54px; height: 54px; font-size: 15px; }
+  .confidence-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .walk-controls button { flex: 1 1 auto; }
+}

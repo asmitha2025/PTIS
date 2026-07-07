@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PTIS</title>
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./clear.css?v=compact-5" />
+    <link rel="stylesheet" href="./clear.css?v=walkthrough-1" />
   </head>
   <body>
     <header class="topbar">
       <a class="brand" href="#top" aria-label="PTIS home">PTIS</a>
       <nav aria-label="Page sections">
         <a href="#route">Route</a>
+        <a href="#walkthrough">How it works</a>
         <a href="#decision">Decision</a>
         <a href="#proof">Proof</a>
         <a href="#boundary">Boundary</a>
@@ -29,7 +30,7 @@
           <h1>Traffic systems count vehicles. <span class="accent-text">PTIS predicts where they are going.</span></h1>
           <p class="lead">A vehicle that keeps crossing checkpoints without turning is giving destination evidence. PTIS converts those movement patterns into early destination belief, helping predict bottlenecks before they fully form.</p>
           <div class="hero-actions">
-            <a class="primary-action" href="#route"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>Watch Route Replay</a>
+            <a class="primary-action" href="#walkthrough"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>Watch Route Replay</a>
             <a class="secondary-action" href="#proof"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V9m7 10V5m7 14v-7M3 19h18" /></svg>View Proof Numbers</a>
           </div>
           <div class="proof-ribbon" aria-label="Current proof state">
@@ -69,6 +70,48 @@
         <article><div class="metric-icon clock"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M12 8v5l4 2" /></svg></div><div><span>Safety Violations</span><strong id="safety-metric">--</strong><p>Capacity gate result</p></div></article>
       </section>
 
+
+      <section id="walkthrough" class="section walkthrough-section" aria-label="Interactive PTIS checkpoint walkthrough">
+        <div class="section-title walkthrough-title">
+          <p class="eyebrow">How PTIS works</p>
+          <h2>Click a junction and watch the belief change.</h2>
+          <p>Each checkpoint crossing without a turn removes one destination possibility. PTIS treats that absence as evidence, then applies a capacity gate before any software action becomes eligible.</p>
+        </div>
+
+        <div class="walkthrough-panel">
+          <div class="walkthrough-meta">
+            <span>Silk Board &rarr; Whitefield</span>
+            <strong id="walk-route-summary">6 junctions</strong>
+            <em>Illustrative software replay, not live traffic control.</em>
+          </div>
+
+          <div id="walk-track" class="walk-track" role="tablist" aria-label="PTIS checkpoint sequence"></div>
+
+          <div class="walk-insight-grid">
+            <div class="confidence-box">
+              <div class="confidence-head">
+                <span>Confidence: vehicle is heading to Whitefield</span>
+                <strong id="walk-confidence">18%</strong>
+              </div>
+              <div class="walk-progress" aria-hidden="true"><i id="walk-progress-bar"></i></div>
+              <p id="walk-threshold" class="threshold-note">65% threshold: connector is only eligible after the capacity gate is safe.</p>
+            </div>
+
+            <article id="walk-card" class="walk-card" aria-live="polite">
+              <h3>Vehicle enters at Silk Board</h3>
+              <p>PTIS starts from a prior belief. Six possible destinations remain, so the system observes without acting.</p>
+            </article>
+          </div>
+
+          <div class="walk-controls" aria-label="Walkthrough controls">
+            <button id="walk-prev" type="button">Back</button>
+            <button id="walk-next" class="primary" type="button">Next junction</button>
+            <button id="walk-reset" type="button">Reset</button>
+            <span id="walk-position">Junction 1 / 6</span>
+          </div>
+        </div>
+      </section>
+
       <section id="decision" class="section decision-section" aria-label="How PTIS decides">
         <div class="section-title"><p class="eyebrow">The idea in one flow</p><h2>Do not wait for the jam to become obvious.</h2></div>
         <div class="decision-flow">
@@ -96,6 +139,6 @@
     </main>
 
     <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
-    <script src="./clear.js?v=compact-5"></script>
+    <script src="./clear.js?v=walkthrough-1"></script>
   </body>
 </html>
