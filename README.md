@@ -17,7 +17,7 @@ Do not describe this repository as field deployed or field proven unless `eviden
 ## Demo Links
 
 - Local frontend: `http://127.0.0.1:5173/frontend/index.html`
-- Hugging Face Space target: `https://huggingface.co/spaces/Asmitha-28/ptis-bengaluru-orr-showcase`
+- Hugging Face Space target: `https://huggingface.co/spaces/Asmitha-28/ptis-fullform`
 - Static deploy folder: `deploy/huggingface-space/`
 
 The frontend is a static showcase backed by the same evidence JSON files used by the test and reporting pipeline. It is not a mock data page.
