@@ -1,5 +1,5 @@
 ---
-title: PTIS Bengaluru ORR Showcase
+title: PTIS
 sdk: static
 app_file: index.html
 colorFrom: blue
@@ -8,7 +8,7 @@ pinned: false
 license: mit
 ---
 
-# PTIS Bengaluru ORR Showcase
+# PTIS
 
 Public static showcase for PTIS. This Space uses route geometry, replay evidence JSON, and official planning references included in this folder.
 
